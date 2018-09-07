@@ -20,7 +20,9 @@
       <div  id="app">
         <p>
           <button @click="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
-          <button @click="lorem"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
+          <button @click="load('sample1.txt')" class="hidden"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
+          <button @click="load('sample1.xml')" class="hidden">&lt;&gt; sample XML</button>
+          <button @click="load('sample1.json')" class="hidden">{} sample JSON</button>
         </p>
         <textarea v-model="message" rows="8" style="width:100%;"></textarea>
         <div class="row">
@@ -57,9 +59,16 @@
           <div class="col-sm-10">
             <p>
               <button @click="replaceXbyY">Replace this regex</button><input v-model="replaceX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags"> by <input v-model="byY"><br/>
-              <button @click="removeAllButX">Remove everything except this regex</button><input v-model="dontRemoveX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags"><br/>
-              <button @click="basicSlug">Basic slug (lowercase, spaces to -)</button><br/>
+              <button @click="removeAllButX">Remove everything except this regex</button><input v-model="dontRemoveX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags">
             </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h2>Slug</h2>
+          </div>
+          <div class="col-sm-10">
+            <button @click="basicSlug">Basic slug (lowercase, spaces to -)</button>
           </div>
         </div>
         <div class="row">
@@ -84,6 +93,7 @@
       <footer>
         Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>
       </footer>
+
     </div>
     <script src="vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="vendor/jquery-3.3.1.min.js" charset="utf-8"></script>

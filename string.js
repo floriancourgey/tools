@@ -10,8 +10,14 @@ var app = new Vue({
     dontRemoveX: '[0-9]',
   },
   methods: {
-    clear: function () { this.message = '' },
-    lorem: function () { this.message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id turpis at orci eleifend blandit. In ut interdum magna. Quisque tincidunt sagittis risus, eget varius tortor aliquam ut. Cras rhoncus, leo id pharetra lacinia, mauris lectus tincidunt arcu, ac blandit neque ex in nisi. Nunc a elit ut purus laoreet imperdiet a quis metus. Curabitur laoreet, lorem in consectetur malesuada, sem lectus malesuada urna, eget rhoncus magna arcu nec tortor. Suspendisse lacinia sit amet enim ac condimentum. Vestibulum vehicula lorem libero, quis pellentesque nulla laoreet ac.\n\nAliquam orci sapien, consectetur et orci ut, vestibulum fringilla enim. Donec eget ante odio. Fusce ornare molestie sodales. Curabitur dignissim malesuada ipsum, quis ultricies justo molestie pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi gravida a ligula vitae interdum. Aliquam elementum tortor et tortor facilisis, id feugiat risus venenatis. Mauris cursus auctor arcu at interdum.' },
+    clear: function (){ this.message = '' },
+    load: function(file){
+      switch(file){
+        case 'sample1.txt': msg=''; break;
+        default: msg = this.message;
+      }
+      this.message = msg;
+    },
     upper: function () { this.message = this.message.toUpperCase() },
     lower: function () { this.message = this.message.toLowerCase() },
     reverse: function () { this.message = this.message.split('').reverse().join('') },
