@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>String tools by floriancourgey.com</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="string.css">
   </head>
   <body>
     <div class="container">
@@ -18,96 +19,72 @@
       <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
       <div  id="app">
         <p>
-          <button @click="clear">clear</button>
-          <button @click="lorem">lorem ipsum</button>
+          <button @click="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
+          <button @click="lorem"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
         </p>
         <textarea v-model="message" rows="8" style="width:100%;"></textarea>
-        <ul>
-          <li># characters: {{nbChar}}</li>
-          <li># spaces: {{nbSpace}}</li>
-          <li># lines: {{nbLine}}</li>
-        </ul>
-        <p>
-          <button @click="upper">upper</button>
-          <button @click="lower">lower</button>
-          <button @click="reverse">reverse</button>
-          <button @click="base64encode">base64 encode</button>
-          <button @click="base64decode">base64 decode</button>
-          <button @click="trimLines">trim lines</button>
-        </p>
-        <p>
-          <button @click="replaceXbyY">Replace this regex</button><input v-model="replaceX"> by <input v-model="byY"><br/>
-          <button @click="removeAllButX">Remove all but</button><input v-model="dontRemoveX"><br/>
-        </p>
-        <p>
-          Alphabet: <input v-model="alphabet">
-          <button @click="alphabetaz">a-z</button>
-          <button @click="alphabetazAZ">a-zA-Z</button>
-          <button @click="alphabetazAZ09">a-zA-Z0-9</button>
-          <button @click="alphabetazAZ09Sym">a-zA-Z0-9!#..</button>
-          <input v-model="length" type="number">
-          <br/>
-          <button @click="generate">Generate</button>
-        </p>
+        <div class="row">
+          <div class="col-sm-2">
+            <h2>Statistics</h2>
+          </div>
+          <div class="col-sm-10">
+            <ul>
+              <li># characters: {{nbChar}}</li>
+              <li># spaces: {{nbSpace}}</li>
+              <li># lines: {{nbLine}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h2>Basic edits</h2>
+          </div>
+          <div class="col-sm-10">
+            <p>
+              <button @click="upper"><span class="glyphicon glyphicon-chevron-up"></span> upper</button>
+              <button @click="lower"><span class="glyphicon glyphicon-chevron-down"></span> lower</button>
+              <button @click="reverse"><span class="glyphicon glyphicon-fast-backward"></span> reverse</button>
+              <button @click="base64encode">base64 encode</button>
+              <button @click="base64decode">base64 decode</button>
+              <button @click="trimLines">trim lines</button>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h2>Remove & replace</h2>
+          </div>
+          <div class="col-sm-10">
+            <p>
+              <button @click="replaceXbyY">Replace this regex</button><input v-model="replaceX"> by <input v-model="byY"><br/>
+              <button @click="removeAllButX">Remove all but</button><input v-model="dontRemoveX"><br/>
+              <button @click="basicSlug">Basic slug (lowercase, spaces to -)</button><br/>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <h2>Password gen</h2>
+          </div>
+          <div class="col-sm-10">
+            <p>
+              Alphabet: <input v-model="alphabet">
+              <button @click="alphabetaz">a-z</button>
+              <button @click="alphabetazAZ">a-zA-Z</button>
+              <button @click="alphabetazAZ09">a-zA-Z0-9</button>
+              <button @click="alphabetazAZ09Sym">a-zA-Z0-9!#..</button>
+                with length <input v-model="length" type="number">
+              <br/>
+              <button @click="generate"><span class="glyphicon glyphicon-random"></span> Generate</button>
+            </p>
+          </div>
+        </div>
       </div>
       <footer>
         Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>
       </footer>
     </div>
     <script src="vendor/vue-2.5.17.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      var app = new Vue({
-        el: '#app',
-        data: {
-          message: '',
-          alphabet: '',
-          length: 20,
-          replaceX: ' ',
-          byY: '-',
-          dontRemoveX: '',
-          ignoreCase: false,
-        },
-        methods: {
-          clear: function () { this.message = '' },
-          lorem: function () { this.message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id turpis at orci eleifend blandit. In ut interdum magna. Quisque tincidunt sagittis risus, eget varius tortor aliquam ut. Cras rhoncus, leo id pharetra lacinia, mauris lectus tincidunt arcu, ac blandit neque ex in nisi. Nunc a elit ut purus laoreet imperdiet a quis metus. Curabitur laoreet, lorem in consectetur malesuada, sem lectus malesuada urna, eget rhoncus magna arcu nec tortor. Suspendisse lacinia sit amet enim ac condimentum. Vestibulum vehicula lorem libero, quis pellentesque nulla laoreet ac.\n\nAliquam orci sapien, consectetur et orci ut, vestibulum fringilla enim. Donec eget ante odio. Fusce ornare molestie sodales. Curabitur dignissim malesuada ipsum, quis ultricies justo molestie pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi gravida a ligula vitae interdum. Aliquam elementum tortor et tortor facilisis, id feugiat risus venenatis. Mauris cursus auctor arcu at interdum.' },
-          upper: function () { this.message = this.message.toUpperCase() },
-          lower: function () { this.message = this.message.toLowerCase() },
-          reverse: function () { this.message = this.message.split('').reverse().join('') },
-          base64encode: function () { this.message = btoa(this.message) },
-          base64decode: function () { this.message = atob(this.message) },
-          trimLines: function () {
-            var newMessage = "";
-            for(var line of this.message.split('\n')){
-              newMessage += line.trim()+'\n';
-            }
-            this.message = newMessage;
-          },
-          alphabetaz: function(){ this.alphabet = 'abcdefghijklmnopqrstuvw' },
-          alphabetazAZ: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW' },
-          alphabetazAZ09: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789' },
-          alphabetazAZ09Sym: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789!#$%&*+-=?@^_.' },
-          generate: function(){
-            var generated = "";
-            for (var i = 0; i < this.length; i++){
-              generated += this.alphabet.charAt(Math.floor(Math.random() * this.alphabet.length));
-            }
-            if(this.nbChar > 0){
-              this.message += "\n";
-            }
-            this.message += generated;
-          },
-          replaceXbyY: function(){
-            var regexp = new RegExp(this.replaceX, 'gim');
-            this.message = this.message.replace(regexp, this.byY);
-          },
-          removeAllButX: function() { },
-        },
-        computed: {
-          nbChar: function () { return this.message.length },
-          nbSpace: function () { return (this.message.match(/ /g) || []).length },
-          nbLine: function () { return (this.message.match(/\n/g) || []).length+1 },
-        }
-      })
-    </script>
+    <script src="string.js" charset="utf-8"></script>
   </body>
 </html>
