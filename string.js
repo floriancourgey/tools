@@ -19,8 +19,13 @@ var app = new Vue({
     base64decode: function () { this.message = atob(this.message) },
     trimLines: function () {
       var newMessage = "";
-      for(var line of this.message.split('\n')){
-        newMessage += line.trim()+'\n';
+      var lines = this.message.split('\n');
+      for(var i=0 ; i<lines.length ; i++ ){
+        var line = lines[i];
+        newMessage += line.trim();
+        if(i < lines.length-1){
+          newMessage += '\n';
+        }
       }
       this.message = newMessage;
     },
