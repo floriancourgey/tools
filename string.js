@@ -51,7 +51,8 @@ var app = new Vue({
     removeAllButX: function(){
       var regexp = new RegExp(this.dontRemoveX, this.flags);
       console.log('removeAllButX: RegExp created:', regexp);
-      var matches = this.message.match(regexp);
+      var matches = this.message.match(regexp) || [];
+      console.log('removeAllButX: # of matches:', matches.length);
       this.message = matches.join('');
     },
     basicSlug: function(){
