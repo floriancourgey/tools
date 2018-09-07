@@ -2,12 +2,12 @@ var app = new Vue({
   el: '#app',
   data: {
     message: '',
-    alphabet: '',
+    alphabet: 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789',
     length: 20,
-    replaceX: ' ',
+    replaceX: '\\s+',
     byY: '-',
-    dontRemoveX: '0123456789',
-    ignoreCase: false,
+    flags: 'gim',
+    dontRemoveX: '[0-9]',
   },
   methods: {
     clear: function () { this.message = '' },
@@ -44,17 +44,15 @@ var app = new Vue({
       this.message += generated;
     },
     replaceXbyY: function(){
-      var regexp = new RegExp(this.replaceX, 'gim');
+      var regexp = new RegExp(this.replaceX, this.flags);
+      console.log('replaceXbyY: RegExp created:', regexp);
       this.message = this.message.replace(regexp, this.byY);
     },
     removeAllButX: function(){
-      var newMessage = "";
-      for(var char of this.message){
-        if(this.dontRemoveX.indexOf(char) >= 0){
-          newMessage += char;
-        }
-      }
-      this.message = newMessage;
+      var regexp = new RegExp(this.dontRemoveX, this.flags);
+      console.log('removeAllButX: RegExp created:', regexp);
+      var matches = this.message.match(regexp);
+      this.message = matches.join('');
     },
     basicSlug: function(){
       this.message = this.message.replace(/[ \n\s\t]/gi, '-').replace(/-+/gi, '-').toLowerCase();
