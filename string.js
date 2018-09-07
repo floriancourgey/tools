@@ -6,7 +6,7 @@ var app = new Vue({
     length: 20,
     replaceX: ' ',
     byY: '-',
-    dontRemoveX: '',
+    dontRemoveX: '0123456789',
     ignoreCase: false,
   },
   methods: {
@@ -47,7 +47,15 @@ var app = new Vue({
       var regexp = new RegExp(this.replaceX, 'gim');
       this.message = this.message.replace(regexp, this.byY);
     },
-    removeAllButX: function(){ },
+    removeAllButX: function(){
+      var newMessage = "";
+      for(var char of this.message){
+        if(this.dontRemoveX.indexOf(char) >= 0){
+          newMessage += char;
+        }
+      }
+      this.message = newMessage;
+    },
     basicSlug: function(){
       this.message = this.message.replace(/[ \n\s\t]/gi, '-').replace(/-+/gi, '-').toLowerCase();
     },
