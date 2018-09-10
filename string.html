@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>String tools by floriancourgey.com</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="string.css">
   </head>
   <body>
@@ -18,7 +18,7 @@
         </nav>
       </header>
       <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
-      <div  id="app">
+      <div id="app">
         <p>
           <button @click="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
           <button @click="load('sample1.txt')" class="hidden"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
@@ -44,12 +44,12 @@
           </div>
           <div class="col-sm-10">
             <p>
-              <button @click="upper"><span class="glyphicon glyphicon-chevron-up"></span> upper</button>
-              <button @click="lower"><span class="glyphicon glyphicon-chevron-down"></span> lower</button>
-              <button @click="reverse"><span class="glyphicon glyphicon-fast-backward"></span> reverse</button>
-              <button @click="base64encode">base64 encode</button>
-              <button @click="base64decode">base64 decode</button>
-              <button @click="trimLines">trim lines</button>
+              <app-action click="upper" text="upper" icon="chevron-up" title="Convert text to uppercase using toUpperCase()"></app-action>
+              <app-action click="lower" text="lower" icon="chevron-down" title="Convert text to uppercase using toLowerCase()"></app-action>
+              <app-action click="reverse" text="reverse" icon="fast-backward" title="Convert ABC to CBA"></app-action>
+              <app-action click="base64encode" text="base64 encode" title="Encode text via Base64"></app-action>
+              <app-action click="base64decode" text="base64 decode" title="Decode text via Base64"></app-action>
+              <app-action click="trimLines" text="trim lines" title="Remove spaces at the beginning and the end of each line"></app-action>
             </p>
           </div>
         </div>
@@ -98,6 +98,12 @@
     </div>
     <script src="vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+    </script>
     <script src="string.js" charset="utf-8"></script>
   </body>
 </html>

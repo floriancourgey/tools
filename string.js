@@ -1,3 +1,12 @@
+function glyphicon(icon){
+  return 'glyphicon glyphicon-'+icon;
+};
+Vue.component('app-action', {
+  props: ['click', 'text', 'icon', 'title'],
+  template: '<button v-on:click="{{click}}" v-bind:title="title" class="btn btn-xs btn-default" data-toggle="tooltip">'+
+  '<span v-if="icon" v-bind:class="glyphicon(icon)"></span> {{text}}'+
+  '</button>'
+});
 var app = new Vue({
   el: '#app',
   data: {
