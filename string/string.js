@@ -20,13 +20,7 @@ var appString = new Vue({
   },
   methods: {
     clear: function (){ this.message = '' },
-    load: function(file){
-      switch(file){
-        case 'sample1.txt': msg=''; break;
-        default: msg = this.message;
-      }
-      this.message = msg;
-    },
+    load: function(x){ this.message = x },
     upper: function () { this.message = this.message.toUpperCase() },
     lower: function () { this.message = this.message.toLowerCase() },
     reverse: function () { this.message = this.message.split('').reverse().join('') },
