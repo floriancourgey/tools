@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>String tools by floriancourgey.com</title>
-    <link rel="stylesheet" href="vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="string.css">
   </head>
   <body>
@@ -18,7 +18,7 @@
         </nav>
       </header>
       <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
-      <div id="app">
+      <div id="app-string">
         <p>
           <button @click="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
           <button @click="load('sample1.txt')" class="hidden"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
@@ -96,12 +96,12 @@
       </footer>
 
     </div>
-    <script src="vendor/vue-2.5.17.min.js" charset="utf-8"></script>
-    <script src="vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
     <script src="string.js" charset="utf-8"></script>

@@ -7,8 +7,8 @@ Vue.component('app-action', {
   '<span v-if="icon" v-bind:class="glyphicon(icon)"></span> {{text}}'+
   '</button>'
 });
-var app = new Vue({
-  el: '#app',
+var appString = new Vue({
+  el: '#app-string',
   data: {
     message: '',
     alphabet: 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789',
