@@ -12,7 +12,7 @@
       <header>
         <nav>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="string.html">String tools</a></li>
           </ul>
         </nav>
@@ -20,10 +20,10 @@
       <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
       <div id="app-string">
         <p>
-          <button @click="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
-          <button @click="load('sample1.txt')" class="hidden"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
-          <button @click="load('sample1.xml')" class="hidden">&lt;&gt; sample XML</button>
-          <button @click="load('sample1.json')" class="hidden">{} sample JSON</button>
+          <button @click.native="clear"><span class="glyphicon glyphicon-erase"></span> clear</button>
+          <button @click.native="load('sample1.txt')" class="hidden"><span class="glyphicon glyphicon-font"></span> lorem ipsum</button>
+          <button @click.native="load('sample1.xml')" class="hidden">&lt;&gt; sample XML</button>
+          <button @click.native="load('sample1.json')" class="hidden">{} sample JSON</button>
         </p>
         <textarea v-model="message" rows="8" style="width:100%;"></textarea>
         <div class="row">
@@ -44,12 +44,12 @@
           </div>
           <div class="col-sm-10">
             <p>
-              <app-action click="upper" text="upper" icon="chevron-up" title="Convert text to uppercase using toUpperCase()"></app-action>
-              <app-action click="lower" text="lower" icon="chevron-down" title="Convert text to uppercase using toLowerCase()"></app-action>
-              <app-action click="reverse" text="reverse" icon="fast-backward" title="Convert ABC to CBA"></app-action>
-              <app-action click="base64encode" text="base64 encode" title="Encode text via Base64"></app-action>
-              <app-action click="base64decode" text="base64 decode" title="Decode text via Base64"></app-action>
-              <app-action click="trimLines" text="trim lines" title="Remove spaces at the beginning and the end of each line"></app-action>
+              <app-action @click.native="upper" text="upper" icon="chevron-up" title="Convert text to uppercase using toUpperCase()"></app-action>
+              <app-action @click.native="lower" text="lower" icon="chevron-down" title="Convert text to uppercase using toLowerCase()"></app-action>
+              <app-action @click.native="reverse" text="reverse" icon="fast-backward" title="Convert ABC to CBA"></app-action>
+              <app-action @click.native="base64encode" text="base64 encode" title="Encode text via Base64"></app-action>
+              <app-action @click.native="base64decode" text="base64 decode" title="Decode text via Base64"></app-action>
+              <app-action @click.native="trimLines" text="trim lines" title="Remove spaces at the beginning and the end of each line"></app-action>
             </p>
           </div>
         </div>
@@ -59,8 +59,8 @@
           </div>
           <div class="col-sm-10">
             <p>
-              <button @click="replaceXbyY">Replace this regex</button><input v-model="replaceX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags"> by <input v-model="byY"><br/>
-              <button @click="removeAllButX">Remove everything except this regex</button><input v-model="dontRemoveX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags">
+              <app-action @click.native="replaceXbyY" text="Replace this regex"></app-action><input v-model="replaceX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags"> by <input v-model="byY"><br/>
+              <app-action @click.native="removeAllButX" text="Remove everything except this regex"></app-action><input v-model="dontRemoveX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>) <input v-model="flags">
             </p>
           </div>
         </div>
@@ -69,7 +69,7 @@
             <h2>Slug</h2>
           </div>
           <div class="col-sm-10">
-            <button @click="basicSlug">Basic slug (lowercase, spaces to -)</button>
+            <app-action @click.native="basicSlug" text="Basic slug (lowercase, spaces to -)"></app-action>
           </div>
         </div>
         <div class="row">
@@ -79,14 +79,14 @@
           <div class="col-sm-10">
             <p>
               Alphabet:
-              <button @click="alphabetaz">a-z</button>
-              <button @click="alphabetazAZ">a-zA-Z</button>
-              <button @click="alphabetazAZ09">a-zA-Z0-9</button>
-              <button @click="alphabetazAZ09Sym">a-zA-Z0-9!#..</button><br/>
+              <app-action @click.native="alphabetaz" text="a-z"></app-action>
+              <app-action @click.native="alphabetazAZ" text="a-zA-Z"></app-action>
+              <app-action @click.native="alphabetazAZ09" text="a-zA-Z0-9"></app-action>
+              <app-action @click.native="alphabetazAZ09Sym" text="a-zA-Z0-9!#.."></app-action><br/>
               <input v-model="alphabet" style="width:100%;">
               with length <input v-model="length" type="number">
               <br/>
-              <button @click="generate"><span class="glyphicon glyphicon-random"></span> Generate</button>
+              <app-action @click.native="generate" text="Generate" icon="random"></app-action>
             </p>
           </div>
         </div>

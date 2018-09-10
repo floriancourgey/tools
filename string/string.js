@@ -3,7 +3,7 @@ function glyphicon(icon){
 };
 Vue.component('app-action', {
   props: ['click', 'text', 'icon', 'title'],
-  template: '<button v-on:click="{{click}}" v-bind:title="title" class="btn btn-xs btn-default" data-toggle="tooltip">'+
+  template: '<button v-bind:title="title" class="btn btn-xs btn-default" data-toggle="tooltip">'+
   '<span v-if="icon" v-bind:class="glyphicon(icon)"></span> {{text}}'+
   '</button>'
 });
@@ -11,7 +11,7 @@ var appString = new Vue({
   el: '#app-string',
   data: {
     message: '',
-    alphabet: 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789',
+    alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
     length: 20,
     replaceX: '\\s+',
     byY: '-',
@@ -44,10 +44,10 @@ var appString = new Vue({
       }
       this.message = newMessage;
     },
-    alphabetaz: function(){ this.alphabet = 'abcdefghijklmnopqrstuvw' },
-    alphabetazAZ: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW' },
-    alphabetazAZ09: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789' },
-    alphabetazAZ09Sym: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVW0123456789!#$%&*+-=?@^_.' },
+    alphabetaz: function(event){ this.alphabet = 'abcdefghijklmnopqrstuvwxyz' },
+    alphabetazAZ: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+    alphabetazAZ09: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' },
+    alphabetazAZ09Sym: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&*+-=?@^_.' },
     generate: function(){
       var generated = "";
       for (var i = 0; i < this.length; i++){
