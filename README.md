@@ -1,6 +1,6 @@
 # String tools
 Local client-side only string helpers and modifiers
-https://floriancourgey.github.io/tools/string.html
+https://floriancourgey.github.io/tools/string
 
 ## Concepts
 - accessible online and local (for on the go access)
