@@ -8,5 +8,9 @@ var appSeo = new Vue({
     author: '',
     image: '',
     twitterId: '',
+    language: 'en',
   },
+  methods: {
+    l: function(code){return translations[this.language][code]}
+  }
 });

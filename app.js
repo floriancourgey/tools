@@ -8,7 +8,6 @@ function url(id){
   return isRootPage ? id+'/index.html' : '../'+id+'/index.html'
 }
 
-
 // header
 Vue.component('app-header', {
   template:
@@ -20,6 +19,7 @@ Vue.component('app-header', {
         '<li><a :href="url(\'string\')">String tools</a></li>'+
         '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
         '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
+        '<li>Language: <span onclick="appSeo.language=\'en\'">🇬🇧</span> <span onclick="appSeo.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
       '<hr/>'+
@@ -42,6 +42,7 @@ Vue.component('app-footer', {
           '<li><a :href="url(\'string\')">String tools</a></li>'+
           '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
           '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
+          '<li>Language: <span onclick="appSeo.language=\'en\'">🇬🇧</span> <span onclick="appSeo.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
