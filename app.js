@@ -19,6 +19,7 @@ Vue.component('app-header', {
         '<li><a :href="url()">Home</a></li>'+
         '<li><a :href="url(\'string\')">String tools</a></li>'+
         '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
+        '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
         '</ul>'+
       '</nav>'+
       '<hr/>'+
@@ -40,6 +41,7 @@ Vue.component('app-footer', {
           '<li><a :href="url()">Home</a></li>'+
           '<li><a :href="url(\'string\')">String tools</a></li>'+
           '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
+          '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
         '</ul>'+
       '</nav>'+
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+

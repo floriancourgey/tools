@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SEO tools by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="app-header"><app-header/></div>
+      <main role="main" id="seo">
+        <h1>SEO tools</h1>
+        <h2>Meta generators</h2>
+        <form class="form-horizontal">
+          <div class="form-group-">
+            <label for="title" class="col-sm-2 control-label">Page title</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="title" v-model="title"/>
+              <span class="help-block">No more than 60 characters.</span>
+            </div>
+          </div>
+          <div class="form-group-">
+            <label for="type" class="col-sm-2 control-label">Page type</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="type" v-model="type">
+                <option value="article"></option>
+                <option value="book">book</option>
+                <option value="books.author">books.author</option>
+                <option value="books.book">books.book</option>
+                <option value="books.genre">books.genre</option>
+                <option value="business.business">business.business</option>
+                <option value="fitness.course">fitness.course</option>
+                <option value="game.achievement">game.achievement</option>
+                <option value="music.album">music.album</option>
+                <option value="music.playlist">music.playlist</option>
+                <option value="music.radio_station">music.radio_station</option>
+                <option value="music.song">music.song</option>
+                <option value="place">place</option>
+                <option value="product">product</option>
+                <option value="product.group">product.group</option>
+                <option value="product.item">product.item</option>
+                <option value="profile">profile</option>
+                <option value="restaurant.menu">restaurant.menu</option>
+                <option value="restaurant.menu_item">restaurant.menu_item</option>
+                <option value="restaurant.menu_section">restaurant.menu_section</option>
+                <option value="restaurant.restaurant">restaurant.restaurant</option>
+                <option value="video.episode">video.episode</option>
+                <option value="video.movie">video.movie</option>
+                <option value="video.other">video.other</option>
+                <option value="video.tv_show">video.tv_show</option>
+              </select>
+              <span class="help-block">See <a href="https://developers.facebook.com/docs/reference/opengraph#object-type" target="_blank">Facebook og:type reference</a>.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" v-model="description" id="description" rows="2"></textarea>
+              <span class="help-block">No more than 155 characters.</span>
+            </div>
+          </div>
+          <div class="form-group-">
+            <label for="author" class="col-sm-2 control-label">Author</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="author" v-model="author"/>
+              <span class="help-block">No more than 60 characters.</span>
+            </div>
+          </div>
+          <div class="form-group-">
+            <label for="twitterId" class="col-sm-2 control-label">Twitter account</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="twitterId" v-model="twitterId"/>
+              <span class="help-block">Should start with a @</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="image" class="col-sm-2 control-label">Image</label>
+            <div class="col-sm-10">
+              <input class="form-control" v-model="image" id="image" type="text"/>
+              <span class="help-block">HTTPS Image URL, ie https://assetcdn.500px.org/assets/static_pages/home/cover_bg-121d68d0f30118182be4f9ada6c2c502.jpg.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Meta tags generated</label>
+            <div class="col-sm-10">
+              <pre class="form-control-static">
+  &lt;!-- Base --&gt;
+  &lt;title&gt;{{title}}&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;{{description}}&quot; /&gt;
+  &lt;!-- Schema.org meta for Google+ --&gt;
+  &lt;meta itemprop=&quot;name&quot; content=&quot;{{title}}&quot;&gt;
+  &lt;meta itemprop=&quot;description&quot; content=&quot;{{description}}&quot;&gt;
+  &lt;meta itemprop=&quot;image&quot; content=&quot;{{image}}&quot;&gt;
+  &lt;!-- Twitter card --&gt;
+  &lt;meta name=&quot;twitter:card&quot; content=&quot;{{image}}&quot;&gt;
+  &lt;meta name=&quot;twitter:site&quot; content=&quot;{{twitterId}}&quot;&gt;
+  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{title}}&quot;&gt;
+  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{description}}&quot;&gt;
+  &lt;meta name=&quot;twitter:creator&quot; content=&quot;{{twitterId}}&quot;&gt;
+  &lt;!-- Open Graph meta (Facebook, Linkedin) --&gt;
+  &lt;meta property=&quot;og:title&quot; content=&quot;{{title}}&quot; /&gt;
+  &lt;meta property=&quot;og:type&quot; content=&quot;{{type}}&quot; /&gt;
+  &lt;meta property=&quot;og:description&quot; content=&quot;{{description}}&quot; /&gt;
+  &lt;meta property=&quot;author&quot; content=&quot;{{author}}&quot; /&gt;
+  &lt;meta property=&quot;og:image&quot; content=&quot;{{image}}&quot; /&gt;</pre>
+            </div>
+          </div>
+
+        </form>
+        <h2>Content-width checker</h2>
+        <textarea class="form-control" v-model="message" rows="8"></textarea>
+        <div id="app-footer"><app-footer/></div>
+      </main>
+    </div>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="seo.js" charset="utf-8"></script>
+  </body>
+</html>
