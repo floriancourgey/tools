@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>UNIX tools by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <a href="https://github.com/floriancourgey/tools" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../string/index.html">String tools</a></li>
+            <li><a href="index.html">UNIX tools</a></li>
+          </ul>
+        </nav>
+      </header>
+      <h2>grep (find in file and files)</h2>
+      <p>
+        grep 'word' file1 file2<br>
+        grep -w 'word_only' file1 file2<br>
+        grep -r 'word' dir
+      </p>
+      <h2>GCC Gnu C Compiler</h2>
+      <p>
+        gcc -v<br>
+        gcc file1.c file2.c -O bin<br>
+        gcc -Wall file1.c file2.c -O bin # print all warnings<br>
+
+      </p>
+      <h2>PATH</h2>
+      <p>
+        bash -c 'echo $PATH'<br/>
+        Linux: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games<br/>
+        Mac: /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+      </p>
+      <h2>Symbolic links - symlinks</h2>
+      <p>
+        ln -s source target<br/>
+        Link bin in home to PATH: ln -s ~/my_executable /usr/local/bin/my_executable
+      </p>
+      <h2>TAR</h2>
+      <p>tar cvf test.tar . # TAR current dir: c=create, v=verbose f=file</p>
+      <p>tar tvf test.tar # list content of TAR file: t=table of content </p>
+      <p>tar xvf test.tar # unTAR all files: x=xtract</p>
+      <p>tar xvf test.tar file1 # unTar specific file</p>
+      <h2>ZIP</h2>
+      <h2>Memdump forensics with volatility</h2>
+      <p>
+        Install:<br>
+        wget http://downloads.volatilityfoundation.org/releases/2.6/volatility_2.6_mac64_standalone.zip<br/>
+        unzip volatility_2.6_mac64_standalone.zip<br>
+        cp volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone /usr/local/bin<br>
+        ln -s /usr/local/bin/volatility_2.6_mac64_standalone  /usr/local/bin/volatility
+        volatility -h
+      </p>
+      <p>
+        Command reference https://github.com/volatilityfoundation/volatility/wiki/Command-Reference
+      </p>
+      <p>
+        Image info: volatility -f file.raw imageinfo<br>
+        Process list: volatility -f file.raw --profile=Win7SP1x86 pslist # or pstree<br>
+        Hidden process list: psscan<br>
+        env vars: envars<br>
+        Command through console shell cmd.exe: cmdscan<br>
+        File search: filescan<br>
+        Dump file: dumpfiles -D output/ -Q 0x000000003f22a930 # memory address<br>
+        Print Reg Key: printkey -K 'RealVNC\\vncserver'<br>
+        Print Reg Key: printkey -K 'Policy\\Secrets\\DefaultPassword'<br>
+        LSA dump: lsadump<br>
+        Screenshot desktops: screenshot -D output/<br>
+        Clipboard content: clipboard<br>
+      </p>
+    </div>
+  </body>
+</html>
