@@ -2,28 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>title empty index for test</title>
+    <title>Tools by floriancourgey.com</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
   </head>
   <body>
     <div class="container" id="app">
-      <header>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="string">String tools</a></li>
-          </ul>
-        </nav>
-      </header>
+      <div id="app-header"><app-header/></div>
       <h1>Tools and client-side helpers</h1>
       <ul>
-        <li><a href="string">String tools</a></li>
+        <li><a href="string/index.html">String tools</a></li>
+        <li><a href="unix/index.html">UNIX tools (grep, PATH, pentest, linux/mac cheatsheet)</a></li>
       </ul>
-      <footer>
-        Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>
-      </footer>
+      <div id="app-footer"><app-footer/></div>
     </div>
     <script src="vendor/vue-2.5.17.min.js" charset="utf-8"></script>
-    <script src="index.js" charset="utf-8"></script>
+    <script src="vendor/director-1.2.6.min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
