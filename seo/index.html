@@ -117,9 +117,29 @@
         </form>
         <h2>Content-width checker</h2>
         <textarea class="form-control" v-model="message" rows="8"></textarea>
-        <div id="app-footer"><app-footer/></div>
+        <div class="">
+          Twitter {{nbChar}}/140
+          <span v-if="nbChar>=20 && nbChar<=140">✅</span>
+          <span v-else-if="nbChar>0 && nbChar<20" title="Should be less than 20 char" data-toggle="tooltip">⚠️</span>
+          <span v-show="nbChar==0 || nbChar>140" title="Shouldn't be empty or more than 140 char" data-toggle="tooltip">⛔</span>
+        </div>
+        <div class="">
+          Facebook {{nbChar}}/400
+          <span v-show="nbChar>=50 && nbChar<=200">✅</span>
+          <span v-show="nbChar>0 && nbChar<50" title="Should be more than 50 char" data-toggle="tooltip">⚠️</span>
+          <span v-show="nbChar>200 && nbChar<=400" title="Should be less than 200 char" data-toggle="tooltip">⚠️</span>
+          <span v-show="nbChar==0 || nbChar>400" title="Shouldn't be empty or more than 400 char" data-toggle="tooltip">⛔</span>
+        </div>
       </main>
+      <div id="app-footer"><app-footer/></div>
     </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
     <script src="translations-en.js" charset="utf-8"></script>

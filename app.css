@@ -1,6 +1,3 @@
-[onclick] {
-  cursor: pointer;
-}
 samp {
   padding: 2px 4px;
   font-size: 90%;
@@ -24,4 +21,10 @@ kbd.none::before {
 }
 .form-group {
   margin-bottom: 5px;
+}
+[title] {
+  cursor: help;
+}
+[onclick], button, button[title] {
+  cursor: pointer;
 }
