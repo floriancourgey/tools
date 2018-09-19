@@ -13,78 +13,83 @@
       <div id="app-header"><app-header/></div>
       <main id="seo" role="main">
         <h1>{{l('title')}}</h1>
-        <h2>Meta generators</h2>
+        <h2>{{l('meta.title')}}</h2>
         <form class="form-horizontal">
-          <div class="form-group-">
-            <label for="title" class="col-sm-2 control-label">Page title</label>
-            <div class="col-sm-4">
-              <input type="email" class="form-control" id="title" v-model="title"/>
-              <span class="help-block">No more than 60 characters.</span>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="title" class="col-sm-4 control-label">{{l('meta.form.title')}}</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control" id="title" v-model="title"/>
+                <span class="help-block">No more than 60 characters.</span>
+              </div>
             </div>
-          </div>
-          <div class="form-group-">
-            <label for="type" class="col-sm-2 control-label">Page type</label>
-            <div class="col-sm-4">
-              <select class="form-control" id="type" v-model="type">
-                <option value="article"></option>
-                <option value="book">book</option>
-                <option value="books.author">books.author</option>
-                <option value="books.book">books.book</option>
-                <option value="books.genre">books.genre</option>
-                <option value="business.business">business.business</option>
-                <option value="fitness.course">fitness.course</option>
-                <option value="game.achievement">game.achievement</option>
-                <option value="music.album">music.album</option>
-                <option value="music.playlist">music.playlist</option>
-                <option value="music.radio_station">music.radio_station</option>
-                <option value="music.song">music.song</option>
-                <option value="place">place</option>
-                <option value="product">product</option>
-                <option value="product.group">product.group</option>
-                <option value="product.item">product.item</option>
-                <option value="profile">profile</option>
-                <option value="restaurant.menu">restaurant.menu</option>
-                <option value="restaurant.menu_item">restaurant.menu_item</option>
-                <option value="restaurant.menu_section">restaurant.menu_section</option>
-                <option value="restaurant.restaurant">restaurant.restaurant</option>
-                <option value="video.episode">video.episode</option>
-                <option value="video.movie">video.movie</option>
-                <option value="video.other">video.other</option>
-                <option value="video.tv_show">video.tv_show</option>
-              </select>
-              <span class="help-block">See <a href="https://developers.facebook.com/docs/reference/opengraph#object-type" target="_blank">Facebook og:type reference</a>.</span>
+            <div class="col-sm-6">
+              <label for="type" class="col-sm-4 control-label">{{l('meta.form.type')}}</label>
+              <div class="col-sm-8">
+                <select class="form-control" id="type" v-model="type">
+                  <option value="article"></option>
+                  <option value="book">book</option>
+                  <option value="books.author">books.author</option>
+                  <option value="books.book">books.book</option>
+                  <option value="books.genre">books.genre</option>
+                  <option value="business.business">business.business</option>
+                  <option value="fitness.course">fitness.course</option>
+                  <option value="game.achievement">game.achievement</option>
+                  <option value="music.album">music.album</option>
+                  <option value="music.playlist">music.playlist</option>
+                  <option value="music.radio_station">music.radio_station</option>
+                  <option value="music.song">music.song</option>
+                  <option value="place">place</option>
+                  <option value="product">product</option>
+                  <option value="product.group">product.group</option>
+                  <option value="product.item">product.item</option>
+                  <option value="profile">profile</option>
+                  <option value="restaurant.menu">restaurant.menu</option>
+                  <option value="restaurant.menu_item">restaurant.menu_item</option>
+                  <option value="restaurant.menu_section">restaurant.menu_section</option>
+                  <option value="restaurant.restaurant">restaurant.restaurant</option>
+                  <option value="video.episode">video.episode</option>
+                  <option value="video.movie">video.movie</option>
+                  <option value="video.other">video.other</option>
+                  <option value="video.tv_show">video.tv_show</option>
+                </select>
+                <span class="help-block">See <a href="https://developers.facebook.com/docs/reference/opengraph#object-type" target="_blank">Facebook og:type reference</a>.</span>
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">Description</label>
+            <label for="description" class="col-sm-2 control-label">{{l('meta.form.description')}}</label>
             <div class="col-sm-10">
               <textarea class="form-control" v-model="description" id="description" rows="2"></textarea>
               <span class="help-block">No more than 155 characters.</span>
             </div>
           </div>
-          <div class="form-group-">
-            <label for="author" class="col-sm-2 control-label">Author</label>
-            <div class="col-sm-4">
-              <input type="email" class="form-control" id="author" v-model="author"/>
-              <span class="help-block">No more than 60 characters.</span>
-            </div>
-          </div>
-          <div class="form-group-">
-            <label for="twitterId" class="col-sm-2 control-label">Twitter account</label>
-            <div class="col-sm-4">
-              <input type="email" class="form-control" id="twitterId" v-model="twitterId"/>
-              <span class="help-block">Should start with a @</span>
-            </div>
-          </div>
           <div class="form-group">
-            <label for="image" class="col-sm-2 control-label">Image</label>
+            <div class="col-sm-6">
+              <label for="author" class="col-sm-4 control-label">{{l('meta.form.author')}}</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control" id="author" v-model="author"/>
+                <span class="help-block">No more than 60 characters.</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="twitterId" class="col-sm-4 control-label">{{l('meta.form.twitter')}}</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control" id="twitterId" v-model="twitterId"/>
+                <span class="help-block">Should start with a @</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="image" class="col-sm-2 control-label">{{l('meta.form.image')}}</label>
             <div class="col-sm-10">
               <input class="form-control" v-model="image" id="image" type="text"/>
               <span class="help-block">HTTPS Image URL, ie https://assetcdn.500px.org/assets/static_pages/home/cover_bg-121d68d0f30118182be4f9ada6c2c502.jpg.</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">Meta tags generated</label>
+            <label class="col-sm-2 control-label">{{l('meta.generated')}}</label>
             <div class="col-sm-10">
               <pre class="form-control-static">
   &lt;!-- Base --&gt;

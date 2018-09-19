@@ -19,3 +19,9 @@ kbd.root::before {
 kbd.none::before {
   content: '';
 }
+.help-block {
+  margin: 1px 0;
+}
+.form-group {
+  margin-bottom: 5px;
+}

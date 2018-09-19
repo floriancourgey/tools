@@ -12,5 +12,5 @@ var appSeo = new Vue({
   },
   methods: {
     l: function(code){return translations[this.language][code]}
-  }
+  },
 });
