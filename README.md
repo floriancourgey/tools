@@ -3,14 +3,15 @@ Local client-side only string helpers and modifiers
 https://floriancourgey.github.io/tools/string
 
 ## Concepts
-- accessible online and local (for on the go access)
-- client-side only, no server
-- Javascript with basic VueJS (no npm, webpack)
+- Accessible online and local (for on the go access)
+- Client-side only, no server
+- Javascript with basic JS+VueJS 2.5 (no npm or webpack for the moment)
+- Bootstrap 3 (& jQuery only for Bootstrap JS effects)
 - Focused on easy update
-- each folder is independant from other, like its own module
-- vendors are part of the repo in /vendor to work locally
-- used as a VueJS first steps tutorial
-- Basic internationalisation is present (english, french)
+- Each folder is independant from other, like its own module
+- Vendors are part of the repo in /vendor to work locally (no CDN, no package management for the moment)
+- Used as a VueJS+router+i18n first steps tutorial
+- Basic internationalisation is present (english, french) via translations-en.js in each folder
 
 ## Inspirations
 Inspired from https://codebeautify.org/
