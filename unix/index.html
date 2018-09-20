@@ -41,6 +41,32 @@
         <kbd>tar xvf test.tar</kbd> unTAR all files: <kbd class="none">x</kbd>=xtract<br/>
         <kbd>tar xvf test.tar file1</kbd> unTAR specific file
         <h2>ZIP</h2>
+        <h2>radare2 r2 disassembler for crackme</h2>
+        <p>
+          <kbd>radare2 my_executable.exe</kbd> for Windows<br>
+          <kbd>r2 my_bin</kbd> for UNIX<br>
+          <samp>[0x00401220]&gt; </samp> r2 opens a shell-like<br>
+          <kbd class="r2">pwd</kbd><br>
+          <samp>~/my_dir</samp><br>
+          <kbd class="r2">? 0x636261</kbd> debug hex string in various formats<br>
+          <samp>
+            hex     0x636261<br>
+            octal   030661141<br>
+            int32   6513249<br>
+            string  "abc"<br>
+            binary  0b011000110110001001100001<br>
+            fvalue: 6513249.0
+          </samp><br>
+    		  <kbd class="r2">aa</kbd> analyze all<br>
+          <kbd class="r2">pdf @ main</kbd> print disassemble function<br>
+          <samp>
+            |           ;-- _main:<br>
+            / (fcn) main 193<br>
+            |   main (int arg_8h, int arg_ch);<br>
+            |           ; var int local_1ch @ ebp-0x1c
+          </samp><br>
+          
+        </p>
         <h2>Memdump forensics with volatility</h2>
         <p>
           Install:<br>
