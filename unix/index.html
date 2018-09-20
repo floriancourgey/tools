@@ -42,6 +42,7 @@
         <kbd>tar xvf test.tar file1</kbd> unTAR specific file
         <h2>ZIP</h2>
         <h2>radare2 r2 disassembler for crackme</h2>
+        <h3>Basics</h3>
         <p>
           <kbd>radare2 my_executable.exe</kbd> for Windows<br>
           <kbd>r2 my_bin</kbd> for UNIX<br>
@@ -59,9 +60,16 @@
           </samp><br>
           <kbd class="r2">ls | grep 'test'</kbd> for Unix<br>
           <kbd class="r2">ls ~ 'test'</kbd> built-in grep <kbd class="none">~</kbd> (can be used on Windows)<br>
+        </p>
+        <h3>Search and display</h3>
+        <p>
           <kbd class="r2">s</kbd> go to address 0x20<br>
           <kbd class="none">[0x00000020]&gt; s</kbd> print current address<br>
-          <smap>0x10</samp><br>
+          <samp>0x10</samp><br>
+          <kbd class="r2">pd 20</kbd> print next 20 disassembly lines
+        </p>
+        <h3>Analyze</h3>
+        <p>
           <kbd class="r2">aa</kbd> analyze All<br>
           <kbd class="r2">pdf @ main</kbd> print disassemble function<br>
           <samp>
@@ -70,7 +78,6 @@
             |   main (int arg_8h, int arg_ch);<br>
             |           ; var int local_1ch @ ebp-0x1c
           </samp><br>
-          
         </p>
         <h2>Memdump forensics with volatility</h2>
         <p>
