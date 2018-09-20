@@ -49,6 +49,20 @@
           <samp>[0x00401220]&gt; </samp> r2 opens a shell-like<br>
           <kbd class="r2">pwd</kbd><br>
           <samp>~/my_dir</samp><br>
+          <kbd class="r2">i</kbd> file info<br>
+          <samp>
+            file     ~\my_bin
+            format   pe<br>
+            iorw     false<br>
+            mode     r-x<br>
+            size     0x3c94<br>
+            humansz  15.1K<br>
+            type     EXEC (Executable file)<br>
+            arch     x86<br>
+            binsz    15508<br>
+            bintype  pe<br>
+            bits     32
+          </samp>
           <kbd class="r2">? 0x636261</kbd> debug hex string in various formats<br>
           <samp>
             hex     0x636261<br>
@@ -66,7 +80,12 @@
           <kbd class="r2">s</kbd> go to address 0x20<br>
           <kbd class="none">[0x00000020]&gt; s</kbd> print current address<br>
           <samp>0x10</samp><br>
-          <kbd class="r2">pd 20</kbd> print next 20 disassembly lines
+          <kbd class="r2">pd 20</kbd> print next 20 disassembly lines<br>
+          <kbd class="r2">iz</kbd> print all strings<br>
+          <samp>
+            000 0x0000100b 0x0040300b  29  30 (.rdata) ascii This is the first string\n<br>
+            001 0x0000102c 0x0040302c 119 120 (.rdata) ascii This is another string!!\n
+          </samp>
         </p>
         <h3>Analyze</h3>
         <p>
