@@ -13,6 +13,9 @@ kbd::before {
 kbd.root::before {
   content: '# ';
 }
+kbd.r2::before {
+    content: '[0x00401220]> ';
+}
 kbd.none::before {
   content: '';
 }
