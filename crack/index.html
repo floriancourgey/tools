@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crack & Hack tools by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="app-header"><app-header/></div>
+      <main id="seo" role="main">
+        <app-header/>
+        <h1>Crack & Hack</h1>
+        <h2>radare2 r2 disassembler for crackme</h2>
+        <h3>Basics</h3>
+        <p>
+          <kbd>radare2 my_executable.exe</kbd> for Windows<br>
+          <kbd>r2 my_bin</kbd> for UNIX<br>
+          <samp>[0x00401220]&gt; </samp> r2 opens a shell-like<br>
+          <kbd class="r2">pwd</kbd><br>
+          <samp>~/my_dir</samp><br>
+          <kbd class="r2">i</kbd> file info<br>
+          <samp>
+            file     ~\my_bin
+            format   pe<br>
+            iorw     false<br>
+            mode     r-x<br>
+            size     0x3c94<br>
+            humansz  15.1K<br>
+            type     EXEC (Executable file)<br>
+            arch     x86<br>
+            binsz    15508<br>
+            bintype  pe<br>
+            bits     32
+          </samp>
+          <kbd class="r2">? 0x636261</kbd> debug hex string in various formats<br>
+          <samp>
+            hex     0x636261<br>
+            octal   030661141<br>
+            int32   6513249<br>
+            string  "abc"<br>
+            binary  0b011000110110001001100001<br>
+            fvalue: 6513249.0
+          </samp><br>
+          <kbd class="r2">ls | grep 'test'</kbd> for Unix<br>
+          <kbd class="r2">ls ~ 'test'</kbd> built-in grep <kbd class="none">~</kbd> (can be used on Windows)<br>
+        </p>
+        <h3>Search and display</h3>
+        <p>
+          <kbd class="r2">s</kbd> go to address 0x20<br>
+          <kbd class="none">[0x00000020]&gt; s</kbd> print current address<br>
+          <samp>0x10</samp><br>
+          <kbd class="r2">pd 20</kbd> print next 20 disassembly lines<br>
+          <kbd class="r2">iz</kbd> print all strings<br>
+          <samp>
+            000 0x0000100b 0x0040300b  29  30 (.rdata) ascii This is the first string\n<br>
+            001 0x0000102c 0x0040302c 119 120 (.rdata) ascii This is another string!!\n
+          </samp>
+        </p>
+        <h3>Analyze</h3>
+        <p>
+          <kbd class="r2">aa</kbd> analyze All<br>
+          <kbd class="r2">pdf @ main</kbd> print disassemble function<br>
+          <samp>
+            |           ;-- _main:<br>
+            / (fcn) main 193<br>
+            |   main (int arg_8h, int arg_ch);<br>
+            |           ; var int local_1ch @ ebp-0x1c
+          </samp><br>
+        </p>
+        <h2>Memdump forensics with volatility</h2>
+        <p>
+          Install:<br>
+          <kbd>
+          wget http://downloads.volatilityfoundation.org/releases/2.6/volatility_2.6_mac64_standalone.zip<br/>
+          unzip volatility_2.6_mac64_standalone.zip<br>
+          cp volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone /usr/local/bin<br>
+          ln -s /usr/local/bin/volatility_2.6_mac64_standalone  /usr/local/bin/volatility
+          volatility -h
+          </kbd>
+        </p>
+        <p>
+          Command reference <a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">https://github.com/volatilityfoundation/volatility/wiki/Command-Reference</a>
+        </p>
+        <p>
+          Image info: volatility -f file.raw imageinfo<br>
+          Process list: volatility -f file.raw --profile=Win7SP1x86 pslist # or pstree<br>
+          Hidden process list: psscan<br>
+          env vars: envars<br>
+          Command through console shell cmd.exe: cmdscan<br>
+          File search: filescan<br>
+          Dump file: dumpfiles -D output/ -Q 0x000000003f22a930 # memory address<br>
+          Print Reg Key: printkey -K 'RealVNC\\vncserver'<br>
+          Print Reg Key: printkey -K 'Policy\\Secrets\\DefaultPassword'<br>
+          LSA dump: lsadump<br>
+          Screenshot desktops: screenshot -D output/<br>
+          Clipboard content: clipboard<br>
+        </p>
+      </main>
+      <div id="app-footer"><app-footer/></div>
+    </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+  </body>
+</html>
