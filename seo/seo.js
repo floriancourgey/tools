@@ -1,4 +1,4 @@
-var appSeo = new Vue({
+var app = new Vue({
   el: '#seo',
   data: {
     title: '',
@@ -10,9 +10,6 @@ var appSeo = new Vue({
     twitterId: '@',
     showComments: true,
     language: 'en',
-  },
-  methods: {
-    l: function(code){return translations[this.language][code]}
   },
   computed: {
     nbChar: function () { return this.message.length },

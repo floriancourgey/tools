@@ -20,7 +20,7 @@ Vue.component('app-header', {
         '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
         '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
         '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
-        '<li>Language: <span onclick="appSeo.language=\'en\'">🇬🇧</span> <span onclick="appSeo.language=\'fr\'">🇫🇷</span></li>'+
+        '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
       '<hr/>'+
@@ -41,10 +41,18 @@ Vue.component('app-footer', {
           '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
           '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
           '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
-          '<li>Language: <span onclick="appSeo.language=\'en\'">🇬🇧</span> <span onclick="appSeo.language=\'fr\'">🇫🇷</span></li>'+
+          '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
     '</footer>',
   methods: {url: function(x){return url(x)}}
 });
+
+// translations i18n
+var translations = translations || {};
+Vue.prototype.l = function (value) {
+  if(!this.language) return '{VueJS this.language should be defined}';
+  if(!value) return '';
+  return translations[this.language][value];
+}

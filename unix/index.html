@@ -12,6 +12,7 @@
     <div id="unix" class="container">
       <app-header></app-header>
       <main role="main">
+        <h1>{{l('title')}}</h1>
         <h2>grep (find in file and files)</h2>
         <p>
           <kbd>grep 'word' file1 file2</kbd><br>
@@ -46,9 +47,12 @@
     </div>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
+    <script src="translations-en.js" charset="utf-8"></script>
+    <script src="translations-fr.js" charset="utf-8"></script>
     <script type="text/javascript">
-      new Vue({
+      var app = new Vue({
         el: '#unix',
+        data: {language: 'en',}
       });
     </script>
   </body>
