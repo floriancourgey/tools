@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="../app.css">
   </head>
   <body>
-    <div class="container">
-      <div id="app-header"><app-header/></div>
-      <main id="seo" role="main">
-        <app-header/>
+    <div id="crack" class="container">
+      <app-header></app-header>
+      <main role="main">
         <h1>Crack & Hack</h1>
         <h2>radare2 r2 disassembler for crackme</h2>
         <h3>Basics</h3>
@@ -100,7 +99,7 @@
           Clipboard content: clipboard<br>
         </p>
       </main>
-      <div id="app-footer"><app-footer/></div>
+      <app-footer></app-footer>
     </div>
     <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
@@ -111,5 +110,10 @@
     </script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      new Vue({
+        el: '#crack',
+      });
+    </script>
   </body>
 </html>

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="string.css">
   </head>
   <body>
-    <div class="container">
-      <div id="app-header"><app-header/></div>
-      <main id="app-string" role="main">
+    <div id="app-string" class="container">
+      <app-header></app-header>
+      <main role="main">
         <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
         <p>
           <app-action @click.native="clear" text="clear" icon="erase"></app-action>
@@ -85,8 +85,8 @@
             </p>
           </div>
         </div>
-        </main>
-      <div id="app-footer"><app-footer/></div>
+      </main>
+      <app-footer></app-footer>
     </div>
 
     <script src="sample1.txt.js" charset="utf-8"></script>

@@ -27,9 +27,6 @@ Vue.component('app-header', {
     '</header>',
   methods: {url: function(x){return url(x)}}
 });
-appHeader = new Vue({
-  el: '#app-header',
-});
 
 // footer
 Vue.component('app-footer', {
@@ -50,7 +47,4 @@ Vue.component('app-footer', {
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
     '</footer>',
   methods: {url: function(x){return url(x)}}
-});
-appFooter = new Vue({
-  el: '#app-footer',
 });

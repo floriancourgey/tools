@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../app.css">
   </head>
   <body>
-    <div class="container">
-      <div id="app-header"><app-header/></div>
+    <div id="unix" class="container">
+      <app-header></app-header>
       <main role="main">
         <h2>grep (find in file and files)</h2>
         <p>
@@ -42,9 +42,14 @@
         <kbd>tar xvf test.tar file1</kbd> unTAR specific file
         <h2>ZIP</h2>
       </main>
-      <div id="app-footer"><app-footer/></div>
+      <app-footer></app-footer>
     </div>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      new Vue({
+        el: '#unix',
+      });
+    </script>
   </body>
 </html>

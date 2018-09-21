@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../app.css">
   </head>
   <body>
-    <div class="container">
-      <div id="app-header"><app-header/></div>
-      <main id="seo" role="main">
+    <div id="seo" class="container">
+      <app-header></app-header>
+      <main role="main">
         <h1>{{l('title')}}</h1>
         <h2>{{l('meta.title')}}</h2>
         <form class="form-horizontal">
@@ -138,7 +138,7 @@
           <span v-show="nbChar==0 || nbChar>400" title="Shouldn't be empty or more than 400 char" data-toggle="tooltip">⛔</span>
         </div>
       </main>
-      <div id="app-footer"><app-footer/></div>
+      <app-footer><app-footer/>
     </div>
     <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
