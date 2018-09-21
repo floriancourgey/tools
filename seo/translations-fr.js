@@ -9,4 +9,5 @@ translations['fr'] = {
   'meta.form.twitter':'Compte Twitter',
   'meta.form.image':'Image',
   'meta.generated':'tags <meta> générés',
+  'meta.form.show_comments':'Afficher les commentaires',
 };

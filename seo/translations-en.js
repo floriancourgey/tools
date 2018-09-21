@@ -9,4 +9,5 @@ translations['en'] = {
   'meta.form.twitter':'Twitter account',
   'meta.form.image':'Image',
   'meta.generated':'<meta> tags generated',
+  'meta.form.show_comments':'Show comments',
 };

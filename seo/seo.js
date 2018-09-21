@@ -6,8 +6,9 @@ var appSeo = new Vue({
     type: 'article',
     message: '',
     author: '',
-    image: '',
-    twitterId: '',
+    image: 'https://',
+    twitterId: '@',
+    showComments: true,
     language: 'en',
   },
   methods: {

@@ -49,7 +49,6 @@ Vue.component('app-footer', {
     '</footer>',
   methods: {url: function(x){return url(x)}}
 });
-// vue app
 appFooter = new Vue({
   el: '#app-footer',
 });

@@ -20,14 +20,14 @@
               <label for="title" class="col-sm-4 control-label">{{l('meta.form.title')}}</label>
               <div class="col-sm-8">
                 <input type="email" class="form-control" id="title" v-model="title"/>
-                <span class="help-block">No more than 60 characters.</span>
+                <span class="help-block">{{title.length}}/60 characters</span>
               </div>
             </div>
             <div class="col-sm-6">
               <label for="type" class="col-sm-4 control-label">{{l('meta.form.type')}}</label>
               <div class="col-sm-8">
                 <select class="form-control" id="type" v-model="type">
-                  <option value="article"></option>
+                  <option value="article">article</option>
                   <option value="book">book</option>
                   <option value="books.author">books.author</option>
                   <option value="books.book">books.book</option>
@@ -61,7 +61,7 @@
             <label for="description" class="col-sm-2 control-label">{{l('meta.form.description')}}</label>
             <div class="col-sm-10">
               <textarea class="form-control" v-model="description" id="description" rows="2"></textarea>
-              <span class="help-block">No more than 155 characters.</span>
+              <span class="help-block">{{description.length}}/155 characters</span>
             </div>
           </div>
           <div class="form-group">
@@ -69,7 +69,7 @@
               <label for="author" class="col-sm-4 control-label">{{l('meta.form.author')}}</label>
               <div class="col-sm-8">
                 <input type="email" class="form-control" id="author" v-model="author"/>
-                <span class="help-block">No more than 60 characters.</span>
+                <span class="help-block">{{author.length}}/60 characters</span>
               </div>
             </div>
             <div class="col-sm-6">
@@ -92,26 +92,33 @@
             <label class="col-sm-2 control-label">{{l('meta.generated')}}</label>
             <div class="col-sm-10">
               <pre class="form-control-static">
-  &lt;!-- Base --&gt;
-  &lt;title&gt;{{title}}&lt;/title&gt;
-  &lt;meta name=&quot;description&quot; content=&quot;{{description}}&quot; /&gt;
-  &lt;!-- Schema.org meta for Google+ --&gt;
-  &lt;meta itemprop=&quot;name&quot; content=&quot;{{title}}&quot;&gt;
-  &lt;meta itemprop=&quot;description&quot; content=&quot;{{description}}&quot;&gt;
-  &lt;meta itemprop=&quot;image&quot; content=&quot;{{image}}&quot;&gt;
-  &lt;!-- Twitter card --&gt;
-  &lt;meta name=&quot;twitter:card&quot; content=&quot;{{image}}&quot;&gt;
-  &lt;meta name=&quot;twitter:site&quot; content=&quot;{{twitterId}}&quot;&gt;
-  &lt;meta name=&quot;twitter:title&quot; content=&quot;{{title}}&quot;&gt;
-  &lt;meta name=&quot;twitter:description&quot; content=&quot;{{description}}&quot;&gt;
-  &lt;meta name=&quot;twitter:creator&quot; content=&quot;{{twitterId}}&quot;&gt;
-  &lt;!-- Open Graph meta (Facebook, Linkedin) --&gt;
-  &lt;meta property=&quot;og:title&quot; content=&quot;{{title}}&quot; /&gt;
-  &lt;meta property=&quot;og:type&quot; content=&quot;{{type}}&quot; /&gt;
-  &lt;meta property=&quot;og:description&quot; content=&quot;{{description}}&quot; /&gt;
-  &lt;meta property=&quot;author&quot; content=&quot;{{author}}&quot; /&gt;
-  &lt;meta property=&quot;og:image&quot; content=&quot;{{image}}&quot; /&gt;</pre>
+<template v-if="showComments">&lt;!-- Base --&gt;</template>
+&lt;title&gt;{{title}}&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;{{description}}&quot; /&gt;
+<template v-if="showComments">&lt;!-- Schema.org meta for Google+ --&gt;</template>
+&lt;meta itemprop=&quot;name&quot; content=&quot;{{title}}&quot;&gt;
+&lt;meta itemprop=&quot;description&quot; content=&quot;{{description}}&quot;&gt;
+&lt;meta itemprop=&quot;image&quot; content=&quot;{{image}}&quot;&gt;
+<template v-if="showComments">&lt;!-- Twitter card --&gt;</template>
+&lt;meta name=&quot;twitter:card&quot; content=&quot;{{image}}&quot;&gt;
+&lt;meta name=&quot;twitter:site&quot; content=&quot;{{twitterId}}&quot;&gt;
+&lt;meta name=&quot;twitter:title&quot; content=&quot;{{title}}&quot;&gt;
+&lt;meta name=&quot;twitter:description&quot; content=&quot;{{description}}&quot;&gt;
+&lt;meta name=&quot;twitter:creator&quot; content=&quot;{{twitterId}}&quot;&gt;
+<template v-if="showComments">&lt;!-- Open Graph meta (Facebook, Linkedin) --&gt;</template>
+&lt;meta property=&quot;og:title&quot; content=&quot;{{title}}&quot; /&gt;
+&lt;meta property=&quot;og:type&quot; content=&quot;{{type}}&quot; /&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;{{description}}&quot; /&gt;
+&lt;meta property=&quot;author&quot; content=&quot;{{author}}&quot; /&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;{{image}}&quot; /&gt;
+</pre>
             </div>
+          </div>
+
+          <div class="checkbox">
+            <label class="col-sm-offset-2">
+              <input v-model="showComments" type="checkbox" class=""/> {{l('meta.form.show_comments')}}
+            </label>
           </div>
 
         </form>
