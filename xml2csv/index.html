@@ -18,7 +18,10 @@
         </textarea>
 
         <h2>Definition</h2>
-        <input type="text" v-model="loopXpath">
+        <div class="form-group">
+          <label for="">XPath loop</label>
+          <input type="text" v-model="loopXpath" class="form-control">
+        </div>
         <button type="button" @click="cols.push({})">Add column definition</button>
         <table class="table table-responsive table-striped table-bordered">
           <thead>
@@ -32,9 +35,20 @@
             <tr v-for="(col, index) in cols">
               <td><input v-model="col.title"/></td>
               <td><input v-model="col.xpath"/></td>
-              <td><button @click="cols.splice(index, 1)">Delete</button></td>
+              <td>
+                <button @click="cols.moveUp(col)">up</button>
+                <button @click="cols.moveDown(col)">down</button>
+                <button @click="cols.splice(index, 1)">Delete</button>
+              </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="99" class="text-center">
+                <button type="button" @click="cols.push({})">Add column definition</button>
+              </td>
+            </tr>
+          </tfoot>
         </table>
         <button type="button" @click="generate">Generate</button>
         <h2>Result</h2>
@@ -46,8 +60,7 @@
           </thead>
           <tbody>
             <tr v-for="result in results">
-              <td>{{result[0]}}</td>
-              <td>{{result[1]}}</td>
+              <td v-for="(col, index) in cols">{{result[index]}}</td>
             </tr>
           </tbody>
         </table>

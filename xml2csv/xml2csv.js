@@ -1,12 +1,40 @@
+Array.prototype.moveUp = function (value, by) {
+        var index = this.indexOf(value),
+            newPos = index - (by || 1);
+
+        if (index === -1)
+            throw new Error("Element not found in array");
+
+        if (newPos < 0)
+            newPos = 0;
+
+        this.splice(index, 1);
+        this.splice(newPos, 0, value);
+    };
+
+    Array.prototype.moveDown = function (value, by) {
+        var index = this.indexOf(value),
+            newPos = index + (by || 1);
+
+        if (index === -1)
+            throw new Error("Element not found in array");
+
+        if (newPos >= this.length)
+            newPos = this.length;
+
+        this.splice(index, 1);
+        this.splice(newPos, 0, value);
+    };
+
 var app = new Vue({
   el: '#xml2csv',
   data:{
     message: sample1xml,
     xml: null,
-    loopXpath: '/bookstore/book',
+    loopXpath: '/bookstore/book[@category="web"]',
     cols: [
-      {title:'Title', xpath:'title'},
       {title:'Author', xpath:'author'},
+      {title:'Title', xpath:'title[@lang="en"]'},
     ],
     results:[],
   },
