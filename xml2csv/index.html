@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>xml2csv ETL by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+  </head>
+  <body>
+    <div id="xml2csv" class="container">
+      <app-header></app-header>
+      <main role="main">
+        <h1>XML to CSV - ETL</h1>
+        <h2>XML</h2>
+        <textarea v-model="message" rows="8" class="form-control">
+        </textarea>
+
+        <h2>Definition</h2>
+        <input type="text" v-model="loopXpath">
+        <button type="button" @click="cols.push({})">Add column definition</button>
+        <table class="table table-responsive table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>XPath</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(col, index) in cols">
+              <td><input v-model="col.title"/></td>
+              <td><input v-model="col.xpath"/></td>
+              <td><button @click="cols.splice(index, 1)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" @click="generate">Generate</button>
+        <h2>Result</h2>
+        <table class="table table-responsive table-striped table-bordered">
+          <thead>
+            <tr>
+              <th v-for="col in cols">{{ col.title }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="result in results">
+              <td>{{result[0]}}</td>
+              <td>{{result[1]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+      <app-footer></app-footer>
+    </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="sample1.xml.js" charset="utf-8"></script>
+    <script src="xml2csv.js" charset="utf-8"></script>
+  </body>
+</html>
