@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MPG tools by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+  </head>
+  <body>
+    <div id="crack" class="container">
+      <app-header></app-header>
+      <main role="main">
+        <h1>MPG</h1>
+        <table class="table table-condensed table-striped">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>First name</th>
+              <th>Last Name</th>
+              <th>Team id</th>
+              <th>Avg rating /10</th>
+              <th>Percentage selections</th>
+              <th>Goals</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="player in players">
+              <td>{{player.id}}</td>
+              <td>{{player.firstname}}</td>
+              <td class="text-uppercase">{{player.lastname}}</td>
+              <td>{{player.teamId}}</td>
+              <td>{{player.stats.avgRate}}</td>
+              <td>{{player.stats.percentageStarter}}</td>
+              <td>{{player.stats.sumGoals}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+      <app-footer></app-footer>
+    </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="fr-2018-20180926.js" charset="utf-8"></script>
+    <script src="mpg.js" charset="utf-8"></script>
+  </body>
+</html>
