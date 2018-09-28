@@ -13,9 +13,11 @@
       <app-header></app-header>
       <main role="main">
         <h1>{{l('title')}}</h1>
-        <h2>Echo cat |</h2>
+        <h2>Bash basics</h2>
         <p>
+          <kbd>echo -e "hello\n$(cat file)" > file</kbd> prepend to file
           <kbd>echo "hello" >> file</kbd> append to file
+          <kbd>wget https://myfile.com -O output</kbd> save a web file to disk
         </p>
         <h2>grep (find in file and files)</h2>
         <p>
