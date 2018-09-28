@@ -20,6 +20,7 @@ Vue.component('app-header', {
         '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
         '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
         '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
+        '<li><a :href="url(\'mpg\')">MPG</a></li>'+
         '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
@@ -41,6 +42,7 @@ Vue.component('app-footer', {
           '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
           '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
           '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
+          '<li><a :href="url(\'mpg\')">MPG</a></li>'+
           '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+

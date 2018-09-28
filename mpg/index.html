@@ -13,28 +13,54 @@
       <app-header></app-header>
       <main role="main">
         <h1>MPG</h1>
-        <table class="table table-condensed table-striped">
+
+        <table class="table table-responsive table-condensed table-striped">
           <thead>
             <tr>
+              <th>Actions</th>
               <th>id</th>
               <th>First name</th>
               <th>Last Name</th>
               <th>Team id</th>
               <th>Avg rating /10</th>
-              <th>Percentage selections</th>
+              <th>Selections</th>
               <th>Goals</th>
+              <th>Position</th>
+              <th>fc.com Note</th>
+            </tr>
+            <tr class="hidden">
+              <td></td>
+              <td><input v-model="filter.id" class="form-control"/></td>
+              <td><input v-model="filter.firstname" class="form-control"/></td>
+              <td><input v-model="filter.lastname" class="form-control"/></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="player in players">
-              <td>{{player.id}}</td>
-              <td>{{player.firstname}}</td>
-              <td class="text-uppercase">{{player.lastname}}</td>
-              <td>{{player.teamId}}</td>
-              <td>{{player.stats.avgRate}}</td>
-              <td>{{player.stats.percentageStarter}}</td>
-              <td>{{player.stats.sumGoals}}</td>
-            </tr>
+            <template v-for="(tplPlayers, title) in {'My players':myPlayers, 'All players':players}">
+              <tr>
+                <td colspan="99" class="text-center">{{title}}</td>
+              </tr>
+              <tr v-for="player in tplPlayers" v-show="showPlayer(player)">
+                <td>
+                  <button @click="addToMyTeam(player)" v-show="!isInMyTeam(player)">+</button>
+                  <button @click="removeFromMyTeam(player)" v-show="isInMyTeam(player)">-</button>
+                </td>
+                <td @click="console.log(player)">{{player.id}}</td>
+                <td>{{player.firstname}}</td>
+                <td>{{player.lastname}}</td>
+                <td>{{teams[player.teamId].shortName}}</td>
+                <td class="text-right">{{player.stats.avgRate}}</td>
+                <td class="text-right">{{player.stats.percentageStarter*100}}%</td>
+                <td>{{player.stats.sumGoals}}</td>
+                <td v-bind:style="{ background: positions[player.position].color }">{{positions[player.position].shortName}}</td>
+                <td class="text-right">{{getFcNote(player)}}</td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </main>
@@ -49,7 +75,10 @@
     </script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
-    <script src="fr-2018-20180926.js" charset="utf-8"></script>
+    <script src="2018-positions.js" charset="utf-8"></script>
+    <script src="2018-championships.js" charset="utf-8"></script>
+    <script src="2018-teams.js" charset="utf-8"></script>
+    <script src="datasets/2018-fr-20180926.js" charset="utf-8"></script>
     <script src="mpg.js" charset="utf-8"></script>
   </body>
 </html>
