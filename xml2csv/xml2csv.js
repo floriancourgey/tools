@@ -1,7 +1,7 @@
 var app = new App({
   el: '#xml2csv',
   data:{
-    message: sample1xml,
+    message: sample2xml,
     xml: null,
     loopXpath: '/bookstore/book[@category="web"]',
     cols: [
