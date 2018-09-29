@@ -1,6 +1,3 @@
-String.prototype.contains = function(substring){
-  return this.indexOf(substring) > -1;
-}
 var hasStorage = typeof(Storage) !== "undefined";
 function setItemInStorage(dataKey, data){
   if(!hasStorage) return;
