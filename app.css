@@ -1,3 +1,13 @@
+header {
+  margin-top: 25px;
+}
+footer {
+  margin-top: 25px;
+  padding: 40px 0;
+  color: #999;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
 samp {
   padding: 2px 4px;
   font-size: 90%;

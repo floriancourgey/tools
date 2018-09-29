@@ -11,46 +11,65 @@ function url(id){
 // header
 var appHeader = {
   template:
-    '<header id="top">'+
-      '<a href="https://github.com/floriancourgey/tools" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>'+
-      '<nav>'+
-        '<ul>'+
-        '<li><a :href="url()">Home</a></li>'+
-        '<li><a :href="url(\'string\')">String tools</a></li>'+
-        '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
-        '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
-        '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
-        '<li><a :href="url(\'mpg\')">MPG</a></li>'+
-        '<li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>'+
-        '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
-        '</ul>'+
-      '</nav>'+
-      '<hr/>'+
-    '</header>',
+    '<header id="top" class="container">\
+      <nav class="navbar navbar-default">\
+        <div class="container-fluid">\
+          <div class="navbar-header">\
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">\
+              <span class="sr-only">Toggle navigation</span>\
+              <span class="icon-bar"></span>\
+              <span class="icon-bar"></span>\
+              <span class="icon-bar"></span>\
+            </button>'+
+            // PROJECT HOME
+            '<a class="navbar-brand" href="#">Home</a>\
+          </div>\
+          <div id="navbar" class="navbar-collapse collapse">'+
+            // NAVBAR LEFT
+            '<ul class="nav navbar-nav">\
+              <li><a :href="url(\'string\')">String tools</a></li>\
+              <li><a :href="url(\'unix\')">UNIX tools</a></li>\
+              <li><a :href="url(\'seo\')">SEO tools</a></li>\
+              <li><a :href="url(\'crack\')">Crack & Hack</a></li>\
+              <li><a :href="url(\'mpg\')">MPG</a></li>\
+              <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
+            </ul>'+
+            // NAVBAR RIGHT
+            '<ul class="nav navbar-nav navbar-right">\
+              <li><a href="#">Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></a></li>\
+              <li><a href="https://github.com/floriancourgey/tools" target="_blank">Github project home</a></li>\
+            </ul>\
+          </div><!--/.nav-collapse -->\
+        </div><!--/.container-fluid -->\
+      </nav>\
+      <hr/>\
+      <a href="https://github.com/floriancourgey/tools" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>\
+    </header>',
   methods: {url: function(x){return url(x)}}
 }
 
 // footer
 var appFooter = {
   template:
-    '<footer>'+
-      '<hr/>'+
-      '<a href="https://github.com/floriancourgey/tools" target="_blank">Github project home</a>'+
-      '<nav>'+
-        '<ul>'+
-          '<li><a :href="url()">Home</a></li>'+
-          '<li><a :href="url(\'string\')">String tools</a></li>'+
-          '<li><a :href="url(\'unix\')">UNIX tools</a></li>'+
-          '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
-          '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
-          '<li><a :href="url(\'mpg\')">MPG</a></li>'+
-          '<li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>'+
-          '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>\
-          <li><a href="#top">Back to top</a></li>\
-        </ul>'+
-      '</nav>'+
-      'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
-    '</footer>',
+    '<footer>\
+      <div class="container">\
+        <a href="https://github.com/floriancourgey/tools" target="_blank">Github project home</a>\
+        <nav>\
+          <ul>\
+            <li><a :href="url()">Home</a></li>\
+            <li><a :href="url(\'string\')">String tools</a></li>\
+            <li><a :href="url(\'unix\')">UNIX tools</a></li>\
+            <li><a :href="url(\'seo\')">SEO tools</a></li>\
+            <li><a :href="url(\'crack\')">Crack & Hack</a></li>\
+            <li><a :href="url(\'mpg\')">MPG</a></li>\
+            <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
+            <li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>\
+            <li><a href="#top">Back to top</a></li>\
+          </ul>\
+        </nav>\
+        Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>\
+      </div>\
+    </footer>',
   methods: {url: function(x){return url(x)}}
 }
 
