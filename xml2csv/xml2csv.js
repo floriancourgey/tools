@@ -5,8 +5,10 @@ var app = new App({
     xml: null,
     loopXpath: '/bookstore/book[@category="web"]',
     cols: [
-      {title:'Author', xpath:'author'},
-      {title:'Title', xpath:'title[@lang="en"]'},
+      {title:'Author', xpath:'author', results:[]},
+      {title:'Title (en)', xpath:'title[@lang="en"]', results:[]},
+      {title:'Price', xpath:'price', results:[]},
+      {title:'Year', xpath:'year', results:[]},
     ],
     results:[],
   },
@@ -21,11 +23,14 @@ var app = new App({
       this.results = [];
       // for each node, push to results
       while(node = nodes.iterateNext()){
-        console.log(node);
-        this.results.push({
-          0: document.evaluate(this.cols[0].xpath, node, null, XPathResult.STRING_TYPE, null).stringValue,
-          1: document.evaluate(this.cols[1].xpath, node, null, XPathResult.STRING_TYPE, null).stringValue,
-        })
+        console.log('node',node);
+        for(var i in this.cols){
+          if(!this.cols.hasOwnProperty(i))continue;
+          var col = this.cols[i];
+          var result = document.evaluate(col.xpath, node, null, XPathResult.STRING_TYPE, null).stringValue || '';
+          console.log('result',result);
+          this.cols[i].results.push(result);
+        }
       }
     }
   }

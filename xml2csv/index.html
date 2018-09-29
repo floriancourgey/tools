@@ -36,8 +36,8 @@
               <td><input v-model="col.title"/></td>
               <td><input v-model="col.xpath"/></td>
               <td>
-                <button @click="cols.moveUp(col)">up</button>
-                <button @click="cols.moveDown(col)">down</button>
+                <button @click="cols.moveUp(col)" :disabled="index==0">up</button>
+                <button @click="cols.moveDown(col)" :disabled="index>=cols.length-1">down</button>
                 <button @click="cols.splice(index, 1)">Delete</button>
               </td>
             </tr>
@@ -59,8 +59,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="result in results">
-              <td v-for="(col, index) in cols">{{result[index]}}</td>
+            <tr v-for="(res,i) in cols[0].results">
+              <td v-for="col in cols">{{col.results[i]}}</td>
             </tr>
           </tbody>
         </table>
