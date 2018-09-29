@@ -21,6 +21,7 @@ var appHeader = {
         '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
         '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
         '<li><a :href="url(\'mpg\')">MPG</a></li>'+
+        '<li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>'+
         '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
@@ -43,6 +44,7 @@ var appFooter = {
           '<li><a :href="url(\'seo\')">SEO tools</a></li>'+
           '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
           '<li><a :href="url(\'mpg\')">MPG</a></li>'+
+          '<li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>'+
           '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
         '</ul>'+
       '</nav>'+
