@@ -22,7 +22,7 @@ var appHeader = {
               <span class="icon-bar"></span>\
             </button>'+
             // PROJECT HOME
-            '<a class="navbar-brand" href="#">Home</a>\
+            '<a class="navbar-brand" :href="url()">Home</a>\
           </div>\
           <div id="navbar" class="navbar-collapse collapse">'+
             // NAVBAR LEFT
