@@ -1,4 +1,4 @@
-var app = new Vue({
+var app = new App({
   el: '#seo',
   data: {
     title: '',

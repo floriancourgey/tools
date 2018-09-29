@@ -9,7 +9,7 @@ function url(id){
 }
 
 // header
-Vue.component('app-header', {
+var appHeader = {
   template:
     '<header>'+
       '<a href="https://github.com/floriancourgey/tools" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>'+
@@ -27,10 +27,10 @@ Vue.component('app-header', {
       '<hr/>'+
     '</header>',
   methods: {url: function(x){return url(x)}}
-});
+}
 
 // footer
-Vue.component('app-footer', {
+var appFooter = {
   template:
     '<footer>'+
       '<hr/>'+
@@ -49,12 +49,29 @@ Vue.component('app-footer', {
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
     '</footer>',
   methods: {url: function(x){return url(x)}}
-});
-
-// translations i18n
-var translations = translations || {};
-Vue.prototype.l = function (value) {
-  if(!this.language) return '{VueJS this.language should be defined}';
-  if(!value) return '';
-  return translations[this.language][value];
 }
+
+var App = Vue.extend({
+  data: function(){
+    return {
+      language: 'en',
+      languages: ['en'],
+    }
+  },
+  methods: {
+    l: function(value){
+      if(!value || value.length<1) return '';
+      if(!this.language) return '{VueJS this.language should be defined}';
+      if(!translations) return 'The translation object doesn\'t exist';
+      if(!(this.language in translations)) return 'The language "'+this.language+'" doesn\'t exist';
+      if(!(value in translations[this.language])) return value;
+      return translations[this.language][value];
+    }
+  },
+  components: {
+    'app-header': appHeader,
+    'app-footer': appFooter,
+  },
+})
+
+var translations = translations || {};

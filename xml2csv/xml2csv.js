@@ -26,7 +26,7 @@ Array.prototype.moveUp = function (value, by) {
         this.splice(newPos, 0, value);
     };
 
-var app = new Vue({
+var app = new App({
   el: '#xml2csv',
   data:{
     message: sample1xml,

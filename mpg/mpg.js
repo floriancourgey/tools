@@ -12,7 +12,7 @@ function getItemFromStorage(dataKey){
   return data? JSON.parse(data): null ;
 }
 
-var app = new Vue({
+var app = new App({
   el: '#crack',
   data : {
     filter: {'id':'','firstname':'','lastname':''},
