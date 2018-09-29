@@ -11,7 +11,7 @@ function url(id){
 // header
 var appHeader = {
   template:
-    '<header>'+
+    '<header id="top">'+
       '<a href="https://github.com/floriancourgey/tools" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>'+
       '<nav>'+
         '<ul>'+
@@ -45,8 +45,9 @@ var appFooter = {
           '<li><a :href="url(\'crack\')">Crack & Hack</a></li>'+
           '<li><a :href="url(\'mpg\')">MPG</a></li>'+
           '<li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>'+
-          '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>'+
-        '</ul>'+
+          '<li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>\
+          <li><a href="#top">Back to top</a></li>\
+        </ul>'+
       '</nav>'+
       'Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>'+
     '</footer>',
