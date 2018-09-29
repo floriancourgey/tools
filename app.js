@@ -1,4 +1,4 @@
-// create router
+// router
 regex = /tools\/?(index\.html)?$/;
 var isRootPage = window.location.pathname.match(regex);
 function url(id){
@@ -53,6 +53,19 @@ var appFooter = {
   methods: {url: function(x){return url(x)}}
 }
 
+// app-action
+function glyphicon(icon){
+  return 'glyphicon glyphicon-'+icon;
+};
+var appAction = {
+  props: ['click', 'text', 'icon', 'title'],
+  template:
+  '<button :title="title" class="btn btn-xs btn-default" data-toggle="tooltip">\
+    <span v-if="icon" :class="glyphicon(icon)"></span> {{text}}\
+  </button>'
+}
+
+// app constructor
 var App = Vue.extend({
   data: function(){
     return {
@@ -73,6 +86,7 @@ var App = Vue.extend({
   components: {
     'app-header': appHeader,
     'app-footer': appFooter,
+    'app-action': appAction,
   },
 })
 

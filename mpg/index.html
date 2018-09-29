@@ -47,8 +47,8 @@
               </tr>
               <tr v-for="player in tplPlayers" v-show="showPlayer(player)">
                 <td>
-                  <button @click="addToMyTeam(player)" v-show="!isInMyTeam(player)">+</button>
-                  <button @click="removeFromMyTeam(player)" v-show="isInMyTeam(player)">-</button>
+                  <app-action @click.native="removeFromMyTeam(player)" text="-" v-show="isInMyTeam(player)" title="Remove from my team"></app-action>
+                  <app-action @click.native="addToMyTeam(player)" text="+" v-show="!isInMyTeam(player)" title="Add to my team"></app-action>
                 </td>
                 <td @click="console.log(player)">{{player.id}}</td>
                 <td>{{player.firstname}}</td>
