@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fuzzy finder tools by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+    <style media="screen">
+      mark {
+        background: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fuzzy">
+      <app-header></app-header>
+      <main role="main" class="container">
+        Message <input v-model="message"><br>
+        Dict <textarea v-model="dict" rows="8"></textarea><br>
+        <button @click="clean">clean my dict</button><br>
+        <button @click="go">go</button><br>
+        Results:
+        <ul>
+          <table class="table table-condensed table-striped">
+            <tr v-for="(result, word) in results">
+              <td>{{word}}</td>
+              <td><span v-html="result.html"></span></td>
+              <td>{{result.match[0]}}</td>
+              <td>{{result.match.index}}</td>
+            </tr>
+          </table>
+        </ul>
+      </main>
+      <app-footer></app-footer>
+    </div>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="../polyfill.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var app = new App({
+        el: '#fuzzy',
+        data : {
+          message:'BDAADNGSHLEOSST',
+          dict:'test ghost table',
+          results: {},
+        },
+        methods: {
+          go: function(){
+            this.results = {};
+            for(var word of this.dict.split(/\s+/)){
+              // search
+              var regex = new RegExp(word.split('').join('.*'), 'i');
+              var match = this.message.match(regex);
+              if(match && !(word in this.results)){
+                console.log(word, match);
+                // highlight html
+                var html = '';
+                var i = 0;
+                for(var letter of this.message){
+                  if(letter.toLowerCase() == word[i]){
+                    html += '<mark class="result">'+letter+'</mark>';
+                    i++;
+                  } else {
+                    html += letter;
+                  }
+                }
+                // append to results
+                this.results[word] = {
+                  match: match,
+                  html : html,
+                };
+              }
+            }
+          },
+          clean: function(){
+            var words = new Set();
+            for(var word of this.dict.split(/\s+/)){
+              // trim lower without regex char (todo replace with \$1)
+              word = word.trim().toLowerCase();
+              word = word.replace(/[\(\)\[\]\.\*\+\|\?]/g, '');
+              // limit fuzzy find length at 4
+              if(word.length < 2) continue;
+              words.add(word);
+            }
+            this.dict = Array.from(words).join('\n');
+          },
+        }
+      })
+    </script>
+  </body>
+</html>
