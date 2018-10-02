@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fuzzy finder tools by floriancourgey.com</title>
     <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/datatable-1.10.19/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="../app.css">
     <style media="screen">
       mark {
@@ -23,26 +24,48 @@
         <button @click="go">go</button><br>
         Results:
         <ul>
-          <table class="table table-condensed table-striped">
-            <tr v-for="(result, word) in results">
-              <td>{{word}}</td>
-              <td><span v-html="result.html"></span></td>
-              <td>{{result.match[0]}}</td>
-              <td>{{result.match.index}}</td>
-            </tr>
+          <table id="results" class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <th>word</th>
+                <th>word length</th>
+                <th>preview</th>
+                <th>position</th>
+                <th>match</th>
+                <th>match length</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(result, word) in results">
+                <td>{{word}}</td>
+                <td>{{word.length}}</td>
+                <td><span v-html="result.html"></span></td>
+                <td>{{result.match.index}}</td>
+                <td>{{result.match[0]}}</td>
+                <td>{{result.match[0].length}}</td>
+              </tr>
+            </tbody>
           </table>
         </ul>
       </main>
       <app-footer></app-footer>
     </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="../vendor/datatable-1.10.19/jquery.dataTables.min.js" charset="utf-8"></script>
+    <script src="../vendor/datatable-1.10.19/dataTables.bootstrap.min.js" charset="utf-8"></script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
     <script src="../polyfill.js" charset="utf-8"></script>
     <script type="text/javascript">
+      var $results; // for datatable
+      $(function(){
+        $results = $('#results');
+      });
       var app = new App({
         el: '#fuzzy',
         data : {
-          message:'BDAADNGSHLEOSST',
+          message:'JLEVIESPAVSENISRAESMOITBDAADNGSHLEOSST',
           dict:'test ghost table',
           results: {},
         },
@@ -54,7 +77,6 @@
               var regex = new RegExp(word.split('').join('.*'), 'i');
               var match = this.message.match(regex);
               if(match && !(word in this.results)){
-                console.log(word, match);
                 // highlight html
                 var html = '';
                 var i = 0;
@@ -72,6 +94,15 @@
                   html : html,
                 };
               }
+            }
+            // start dataTable
+            if($results){
+              // destroy if exists
+              try{
+                $results.destroy();
+              } catch(e){}
+              // create
+              // $results.DataTable();
             }
           },
           clean: function(){
