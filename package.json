@@ -1,0 +1,24 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "Local client-side only tools, helpers and cheatsheets https://floriancourgey.github.io/tools",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floriancourgey/tools.git"
+  },
+  "author": "Florian Courgey",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/floriancourgey/tools/issues"
+  },
+  "homepage": "https://floriancourgey.github.io/tools",
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}

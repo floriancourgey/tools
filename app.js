@@ -1,6 +1,6 @@
 // router
-regex = /tools\/?(index\.html)?$/;
-var isRootPage = window.location.pathname.match(regex);
+const regex = /tools\/?(index\.html)?$/;
+const isRootPage = window.location.pathname.match(regex);
 function url(id){
   if(!id){
     return isRootPage ? 'index.html' : '../index.html'
@@ -9,7 +9,7 @@ function url(id){
 }
 
 // header
-var appHeader = {
+const appHeader = {
   template:
     '<header id="top" class="container">\
       <nav class="navbar navbar-default">\
@@ -44,11 +44,11 @@ var appHeader = {
       </nav>\
       <hr/>\
     </header>',
-  methods: {url: function(x){return url(x)}}
-}
+  methods: {url: function(x){return url(x)}},
+};
 
 // footer
-var appFooter = {
+const appFooter = {
   template:
     '<footer>\
       <div class="container">\
@@ -69,31 +69,32 @@ var appFooter = {
         Visit <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a>\
       </div>\
     </footer>',
-  methods: {url: function(x){return url(x)}}
-}
+  methods: {url: function(x){return url(x)}},
+};
 
 // app-action
 function glyphicon(icon){
   return 'glyphicon glyphicon-'+icon;
 };
-var appAction = {
+const appAction = {
   props: ['click', 'text', 'icon', 'title'],
   template:
   '<button :title="title" class="btn btn-xs btn-default" data-toggle="tooltip">\
     <span v-if="icon" :class="glyphicon(icon)"></span> {{text}}\
-  </button>'
-}
+  </button>',
+};
 
 // app constructor
-var App = Vue.extend({
-  data: function(){
+var translations = translations || {};
+const App = Vue.extend({
+  data() {
     return {
       language: 'en',
       languages: ['en'],
     }
   },
   methods: {
-    l: function(value){
+    l(value) {
       if(!value || value.length<1) return '';
       if(!this.language) return '{VueJS this.language should be defined}';
       if(!translations) return 'The translation object doesn\'t exist';
@@ -107,6 +108,4 @@ var App = Vue.extend({
     'app-footer': appFooter,
     'app-action': appAction,
   },
-})
-
-var translations = translations || {};
+});
