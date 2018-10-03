@@ -54,7 +54,7 @@ const appHeader = {
             </ul>'+
             // NAVBAR RIGHT
             '<ul class="nav navbar-nav navbar-right">\
-              <li><a href="#">Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></a></li>\
+              <li><a href="#">Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></a></li>\
               <li><a href="https://github.com/floriancourgey/tools" target="_blank">Github project home</a></li>\
             </ul>\
           </div><!--/.nav-collapse -->\
@@ -107,8 +107,7 @@ var translations = translations || {};
 const App = Vue.extend({
   data() {
     return {
-      language: 'en',
-      languages: ['en'],
+      language: getItemFromStorage('com.floriancourgey.language') || 'en',
     }
   },
   methods: {
@@ -123,6 +122,7 @@ const App = Vue.extend({
     switchLanguage(lang) {
       if(!(lang in translations)) return;
       this.language = lang;
+      setItemInStorage('com.floriancourgey.language', this.language);
     },
   },
   components: {
