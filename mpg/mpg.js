@@ -1,14 +1,3 @@
-var hasStorage = typeof(Storage) !== "undefined";
-function setItemInStorage(dataKey, data){
-  if(!hasStorage) return;
-  localStorage.setItem(dataKey, JSON.stringify(data));
-}
-function getItemFromStorage(dataKey){
-  if(!hasStorage) return;
-  var data = localStorage.getItem(dataKey);
-  return data? JSON.parse(data): null ;
-}
-
 // format players for Datatable (add team name, fc.com note...)
 var datasetForMercato = [];
 for(var i in players){
@@ -47,7 +36,7 @@ var app = new App({
     filter: {'id':'','firstname':'','lastname':''},
     teams: teams,
     players: players,
-    myPlayers: getItemFromStorage('com.floriancourgey.mpg.my_team') || [],
+    myPlayers: getJsonFromStorage('com.floriancourgey.mpg.my_team') || [],
   },
   methods:{
     isInMyTeam: function(player){
@@ -58,7 +47,7 @@ var app = new App({
     },
     addToMyTeam: function(player){
       this.myPlayers.push(player);
-      setItemInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
+      setJsonInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
     },
     addToMyTeamWithId: function(playerId){
       var player = players.find(function(element) {
@@ -70,7 +59,7 @@ var app = new App({
       var index = this.myPlayers.indexOf(player);
       if (index > -1) {
         this.myPlayers.splice(index, 1);
-        setItemInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
+        setJsonInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
       }
     },
     showPlayer: function(player){

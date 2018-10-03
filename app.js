@@ -8,6 +8,24 @@ function url(id){
   return isRootPage ? id+'/index.html' : '../'+id+'/index.html'
 }
 
+// storage
+const hasStorage = typeof(Storage) !== "undefined";
+function setItemInStorage(key, value){
+  if(!hasStorage) return;
+  localStorage.setItem(key, value);
+}
+function setJsonInStorage(key, value){
+  setItemInStorage(key, JSON.stringify(value));
+}
+function getItemFromStorage(key){
+  if(!hasStorage) return;
+  return localStorage.getItem(key);
+}
+function getJsonFromStorage(key){
+  var value = getItemFromStorage(key);
+  return value ? JSON.parse(value) : null;
+}
+
 // header
 const appHeader = {
   template:
@@ -62,7 +80,7 @@ const appFooter = {
             <li><a :href="url(\'crack\')">Crack & Hack</a></li>\
             <li><a :href="url(\'mpg\')">MPG</a></li>\
             <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
-            <li>Language: <span onclick="app.language=\'en\'">🇬🇧</span> <span onclick="app.language=\'fr\'">🇫🇷</span></li>\
+            <li>Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></li>\
             <li><a href="#top">Back to top</a></li>\
           </ul>\
         </nav>\
@@ -101,7 +119,11 @@ const App = Vue.extend({
       if(!(this.language in translations)) return 'The language "'+this.language+'" doesn\'t exist';
       if(!(value in translations[this.language])) return value;
       return translations[this.language][value];
-    }
+    },
+    switchLanguage(lang) {
+      if(!(lang in translations)) return;
+      this.language = lang;
+    },
   },
   components: {
     'app-header': appHeader,
