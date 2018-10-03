@@ -9,8 +9,40 @@ function getItemFromStorage(dataKey){
   return data? JSON.parse(data): null ;
 }
 
+// format players for Datatable (add team name, fc.com note...)
+var datasetForMercato = [];
+for(var i in players){
+  var player = players[i];
+  // console.log(player);
+}
+$(function(){
+  $('#mercato').DataTable( {
+    data: players,
+    columns: [
+      {title: 'Actions', searchable: false, orderable: false, render: function(data, type, player){
+        return '<button class="btn btn-xs btn-default" onclick="app.addToMyTeamWithId(\''+player.id+'\')">Add</button>';
+      }},
+      {title: 'Name', render:function(data, row, player){
+        var f = player.firstname || '';
+        var l = player.lastname || '';
+        return f+' <strong>'+l+'</strong>';
+      }},
+      {title: 'Team', data:'teamId', render: function(data){return teams[data].name}},
+      {title: 'Position', data: 'position',
+        createdCell:function (td, data, rowData, row, col) { $(td).css('background', positions[data].color)},
+        render: function(data){ return positions[data].name;}},
+      {title: 'Avg rate /10', data: 'stats.avgRate'},
+      {title: 'Selections', data: 'stats.percentageStarter'},
+      {title: 'Goals', data: 'stats.sumGoals'},
+      {title: 'Quotation', data: 'quotation'},
+    ],
+    order: [[ 7, 'desc' ]],
+    pageLength: 50,
+  });
+});
+
 var app = new App({
-  el: '#crack',
+  el: '#mpg',
   data : {
     filter: {'id':'','firstname':'','lastname':''},
     teams: teams,
@@ -27,6 +59,12 @@ var app = new App({
     addToMyTeam: function(player){
       this.myPlayers.push(player);
       setItemInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
+    },
+    addToMyTeamWithId: function(playerId){
+      var player = players.find(function(element) {
+        return playerId === element.id;
+      });
+      return this.addToMyTeam(player);
     },
     removeFromMyTeam: function(player){
       var index = this.myPlayers.indexOf(player);

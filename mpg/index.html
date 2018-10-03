@@ -6,63 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MPG tools by floriancourgey.com</title>
     <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/datatable-1.10.19/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="../app.css">
   </head>
   <body>
-    <div id="crack">
+    <div id="mpg">
       <app-header></app-header>
       <main role="main" class="container">
-        <h1>MPG</h1>
+        <h1>{{l('title')}} <small>{{l('updatedOn')}} 20180928</small></h1>
 
-        <table class="table table-responsive table-condensed table-striped">
+        <h2>My team</h2>
+        <p v-if="!myPlayers || myPlayers.length<1" v-html="l('help')">
+        </p>
+        <table v-else class="table table-responsive table-condensed table-striped">
           <thead>
             <tr>
-              <th>Actions</th>
-              <th>id</th>
-              <th>First name</th>
-              <th>Last Name</th>
-              <th>Team id</th>
-              <th>Avg rating /10</th>
-              <th>Selections</th>
-              <th>Goals</th>
-              <th>Position</th>
-              <th>fc.com Note</th>
-            </tr>
-            <tr class="hidden">
-              <td></td>
-              <td><input v-model="filter.id" class="form-control"/></td>
-              <td><input v-model="filter.firstname" class="form-control"/></td>
-              <td><input v-model="filter.lastname" class="form-control"/></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <th>{{l('table.actions')}}</th>
+              <th>{{l('table.name')}}</th>
+              <th>{{l('table.teamId')}}</th>
+              <th>{{l('table.avgRate')}}</th>
+              <th>{{l('table.selections')}}</th>
+              <th>{{l('table.goals')}}</th>
+              <th>{{l('table.position')}}</th>
+              <th>{{l('table.fcNote')}}</th>
             </tr>
           </thead>
           <tbody>
-            <template v-for="(tplPlayers, title) in {'My players':myPlayers, 'All players':players}">
-              <tr>
-                <td colspan="99" class="text-center">{{title}}</td>
-              </tr>
-              <tr v-for="player in tplPlayers" v-show="showPlayer(player)">
-                <td>
-                  <app-action @click.native="removeFromMyTeam(player)" text="-" v-show="isInMyTeam(player)" title="Remove from my team"></app-action>
-                  <app-action @click.native="addToMyTeam(player)" text="+" v-show="!isInMyTeam(player)" title="Add to my team"></app-action>
-                </td>
-                <td @click="console.log(player)">{{player.id}}</td>
-                <td>{{player.firstname}}</td>
-                <td>{{player.lastname}}</td>
-                <td>{{teams[player.teamId].shortName}}</td>
-                <td class="text-right">{{player.stats.avgRate}}</td>
-                <td class="text-right">{{player.stats.percentageStarter*100}}%</td>
-                <td>{{player.stats.sumGoals}}</td>
-                <td v-bind:style="{ background: positions[player.position].color }">{{positions[player.position].shortName}}</td>
-                <td class="text-right">{{getFcNote(player)}}</td>
-              </tr>
-            </template>
+            <tr v-for="player in myPlayers">
+              <td>
+                <app-action @click.native="removeFromMyTeam(player)" text="-" v-show="isInMyTeam(player)" title="Remove from my team"></app-action>
+                <app-action @click.native="addToMyTeam(player)" text="+" v-show="!isInMyTeam(player)" title="Add to my team"></app-action>
+              </td>
+              <td @click="console.log(player)">{{player.firstname}} <strong>{{player.lastname}}</strong></td>
+              <td>{{teams[player.teamId].shortName}}</td>
+              <td class="text-right">{{player.stats.avgRate}}</td>
+              <td class="text-right">{{player.stats.percentageStarter*100}}%</td>
+              <td>{{player.stats.sumGoals}}</td>
+              <td v-bind:style="{ background: positions[player.position].color }">{{positions[player.position].shortName}}</td>
+              <td class="text-right">{{getFcNote(player)}}</td>
+            </tr>
           </tbody>
         </table>
+
+        <h2>Mercato</h2>
+
+        <table id="mercato" class="table table-responsive table-condensed table-striped"></table>
+        <p><small>
+          Mercato is based on plain old jQuery, so there's no translation available (via VueJS).
+        </small></p>
       </main>
       <app-footer></app-footer>
     </div>
@@ -76,10 +67,14 @@
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
     <script src="../polyfill.js" charset="utf-8"></script>
+    <script src="../vendor/datatable-1.10.19/jquery.dataTables.min.js" charset="utf-8"></script>
+    <script src="../vendor/datatable-1.10.19/dataTables.bootstrap.min.js" charset="utf-8"></script>
     <script src="2018-positions.js" charset="utf-8"></script>
     <script src="2018-championships.js" charset="utf-8"></script>
     <script src="2018-teams.js" charset="utf-8"></script>
     <script src="datasets/2018-fr-20180928.js" charset="utf-8"></script>
+    <script src="translations-en.js" charset="utf-8"></script>
+    <script src="translations-fr.js" charset="utf-8"></script>
     <script src="mpg.js" charset="utf-8"></script>
   </body>
 </html>
