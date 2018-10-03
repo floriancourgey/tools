@@ -1,9 +1,4 @@
-// format players for Datatable (add team name, fc.com note...)
-var datasetForMercato = [];
-for(var i in players){
-  var player = players[i];
-  // console.log(player);
-}
+// create Datatable
 $(function(){
   $('#mercato').DataTable( {
     data: players,
@@ -30,7 +25,8 @@ $(function(){
   });
 });
 
-var app = new App({
+// create Vue app
+const app = new App({
   el: '#mpg',
   data : {
     filter: {'id':'','firstname':'','lastname':''},
