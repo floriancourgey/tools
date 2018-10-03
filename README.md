@@ -12,15 +12,15 @@ https://floriancourgey.github.io/tools
 - Vendors are part of the repo in /vendor to work locally (no CDN, no package management for the moment)
 - Used as a VueJS+router+i18n first steps tutorial
 - Basic internationalisation is present (english, french) via translations-en.js in each folder, e.g.
-'''javascript
+```javascript
 var translations = translations || {};
 translations['en'] = {
   'title':'SEO tools',
 }
-'''
-'''html
+```
+```html
 {{ l('title') }}
-'''
+```
 
 ## Inspirations
 - https://codebeautify.org/
