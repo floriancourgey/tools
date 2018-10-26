@@ -1,6 +1,7 @@
 // create Datatable
+datatable = null;
 $(function(){
-  $('#mercato').DataTable( {
+  datatable = $('#mercato').DataTable( {
     data: players,
     dom: '<"wrapper"fitlp>',
     // columns header
@@ -25,6 +26,43 @@ $(function(){
     order: [[ 7, 'desc' ]],
     pageLength: 50,
   });
+  // filters TODO refacto
+  $('#filter-name').on('keyup change', function () {
+    var col = datatable.columns(1);
+    if(!this.value || this.value.length < 1){
+      col.search('');
+      datatable.draw();
+      return;
+    }
+    if(datatable.search() !== this.value) {
+      col.search(this.value);
+      datatable.draw();
+    }
+  });
+  $('#filter-team').on('keyup change', function () {
+    var col = datatable.columns(2);
+    if(!this.value || this.value.length < 1){
+      col.search('');
+      datatable.draw();
+      return;
+    }
+    if(datatable.search() !== this.value) {
+      col.search(this.value);
+      datatable.draw();
+    }
+  });
+  $('#filter-position').on('keyup change', function () {
+    var col = datatable.columns(3);
+    if(!this.value || this.value.length < 1){
+      col.search('');
+      datatable.draw();
+      return;
+    }
+    if(datatable.search() !== this.value) {
+      col.search(this.value);
+      datatable.draw();
+    }
+  });
 });
 
 // create Vue app
@@ -34,6 +72,7 @@ const app = new App({
     filter: {'id':'','firstname':'','lastname':''},
     teams: teams,
     players: players,
+    positions: positions,
     myPlayers: getJsonFromStorage('com.floriancourgey.mpg.my_team') || [],
   },
   methods:{
