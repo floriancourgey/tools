@@ -2,6 +2,8 @@
 $(function(){
   $('#mercato').DataTable( {
     data: players,
+    dom: '<"wrapper"fitlp>',
+    // columns header
     columns: [
       {title: 'Actions', searchable: false, orderable: false, render: function(data, type, player){
         return '<button class="btn btn-xs btn-default" onclick="app.addToMyTeamWithId(\''+player.id+'\')">Add</button>';
