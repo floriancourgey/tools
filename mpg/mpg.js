@@ -5,22 +5,22 @@ $(function(){
     dom: '<"wrapper"fitlp>',
     // columns header
     columns: [
-      {title: 'Actions', searchable: false, orderable: false, render: function(data, type, player){
+      {searchable: false, orderable: false, render: function(data, type, player){
         return '<button class="btn btn-xs btn-default" onclick="app.addToMyTeamWithId(\''+player.id+'\')">Add</button>';
       }},
-      {title: 'Name', render:function(data, row, player){
+      {render:function(data, row, player){
         var f = player.firstname || '';
         var l = player.lastname || '';
         return f+' <strong>'+l+'</strong>';
       }},
-      {title: 'Team', data:'teamId', render: function(data){return teams[data].name}},
-      {title: 'Position', data: 'position',
+      {data:'teamId', render: function(data){return teams[data].name}},
+      {data: 'position',
         createdCell:function (td, data, rowData, row, col) { $(td).css('background', positions[data].color)},
         render: function(data){ return positions[data].name;}},
-      {title: 'Avg rate /10', data: 'stats.avgRate'},
-      {title: 'Selections', data: 'stats.percentageStarter'},
-      {title: 'Goals', data: 'stats.sumGoals'},
-      {title: 'Quotation', data: 'quotation'},
+      {data: 'stats.avgRate'},
+      {data: 'stats.percentageStarter'},
+      {data: 'stats.sumGoals'},
+      {data: 'quotation'},
     ],
     order: [[ 7, 'desc' ]],
     pageLength: 50,
