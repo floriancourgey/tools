@@ -22,6 +22,7 @@ $(function(){
       {data: 'stats.percentageStarter'},
       {data: 'stats.sumGoals'},
       {data: 'quotation'},
+      {render: function(data, type, player){return parseFloat(player.stats.avgRate)*parseFloat(player.stats.percentageStarter)*(1.0+parseFloat(stats.sumGoals));}},
     ],
     order: [[ 7, 'desc' ]],
     pageLength: 50,
