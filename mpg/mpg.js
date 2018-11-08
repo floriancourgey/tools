@@ -1,5 +1,8 @@
 function fcNote(player){
  var note = parseFloat(player.stats.avgRate)*parseFloat(player.stats.percentageStarter)*(1.0+parseFloat(player.stats.sumGoals));
+ if(!note){
+   note = 0;
+ }
  return note.toFixed(2);
 }
 // create Datatable
