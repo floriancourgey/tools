@@ -47,13 +47,25 @@
         <kbd>tar tvf test.tar</kbd> list content of TAR file: <kbd class="none">t</kbd>=table of content<br/>
         <kbd>tar xvf test.tar</kbd> unTAR all files: <kbd class="none">x</kbd>=xtract<br/>
         <kbd>tar xvf test.tar file1</kbd> unTAR specific file
-        <h2>ZIP & GZIP</h2>
+        <h2>GZIP</h2>
         ZIP format archives and compresses files and folders. >> Popular on Windows<br/>
         GZIP format compresses 1 file. To compress multiple files with GZIP, they have to be archived into a single TAR file (called tarball). Hence .tar.gz. >> Popular on UNIX<br/>
         <kbd>gzip file1</kbd> GZIP file1 to file1.gz (and delete file1)<br/>
         <kbd>gzip -k file1</kbd> GZIP file1 to file1.gz and keep file1<br/>
         <kbd>gzip -r dir</kbd> GZIP all files in dir<br/>
         <kbd>gzip -d file1</kbd> Decompress GZIP file
+        <h2>ZIP & UNZIP</h2>
+        <kbd>zip file.zip file1 file2</kbd> <br/>
+        <kbd>unzip file.zip</kbd> Unzip in current dir <br/>
+        <kbd>unzip file.zip -d /target</kbd> Unzip in /target dir <br/>
+        <kbd>unzip -l file.zip</kbd> List (display) content of zip <br/>
+        <kbd>unzip -t file.zip</kbd> Test if valid zip <br/>
+        <kbd>unzip -v file.zip</kbd> Display information such as Length, Method, CRC-32...<br/>
+        <kbd>unzip -j file.zip</kbd> Unzip without directory structure (flat) <br/>
+        <kbd>unzip -P plain_password file.zip</kbd> Unzip with plain text password <br/>
+        <kbd>unzip -q file.zip</kbd> Unzip with quietly (no output) <br/>
+        <a href="https://linux.die.net/man/1/zip">man zip</a><br/>
+        <a href="https://linux.die.net/man/1/unzip">man unzip</a>
       </main>
       <app-footer></app-footer>
     </div>
