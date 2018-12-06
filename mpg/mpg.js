@@ -1,11 +1,11 @@
 function fcNote(player){
- var note = parseFloat(player.stats.avgRate)*parseFloat(player.stats.percentageStarter)*(1.0+parseFloat(player.stats.sumGoals));
- if(!note){
-   note = 0;
- }
- return note.toFixed(2);
+  var note = parseFloat(player.stats.avgRate)*parseFloat(player.stats.percentageStarter)*(1.0+parseFloat(player.stats.sumGoals));
+  if(!note){
+    note = 0;
+  }
+  return note.toFixed(2);
 }
-// create Datatable
+// create Datatable for Mercato
 datatable = null;
 $(function(){
   datatable = $('#mercato').DataTable( {
@@ -131,3 +131,15 @@ const app = new App({
     },
   },
 });
+// update myPlayers with data from dataset
+var newPlayers = [];
+for(var myPlayer of app.myPlayers){
+  for(var player of players){
+    if(player.id == myPlayer.id){
+      newPlayers.push(player);
+      break;
+    }
+  }
+}
+console.log('app.myPlayers', app.myPlayers);
+console.log('newPlayers', newPlayers);
