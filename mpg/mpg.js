@@ -143,3 +143,4 @@ for(var myPlayer of app.myPlayers){
 }
 console.log('app.myPlayers', app.myPlayers);
 console.log('newPlayers', newPlayers);
+app.myPlayers = newPlayers;
