@@ -1,9 +1,11 @@
 function fcNote(player){
-  var note = parseFloat(player.stats.avgRate)*parseFloat(player.stats.percentageStarter)*(1.0+parseFloat(player.stats.sumGoals));
-  if(!note){
-    note = 0;
+  var rate = parseFloat(player.stats.avgRate);
+  var selection = parseFloat(player.stats.percentageStarter);
+  var goals = parseFloat(player.stats.sumGoals)+1;
+  if(!rate || !selection || !goals){
+    return '-';
   }
-  return note.toFixed(2);
+  return Math.round(rate*selection*(1+goals)*100);
 }
 // create Datatable for Mercato
 datatable = null;
@@ -111,24 +113,7 @@ const app = new App({
       var f = this.filter;
       return true;
     },
-    getFcNote: function(player){
-      var rate = parseFloat(player.stats.avgRate);
-      var selection = parseFloat(player.stats.percentageStarter);
-      var goals = parseFloat(player.stats.sumGoals)+1;
-      if(!rate || !selection || !goals){
-        return '-';
-      }
-      return Math.round(rate*selection*(1+goals)*100);
-    },
-    getDetailsFcNote: function(player){
-      var rate = parseFloat(player.stats.avgRate);
-      var selection = parseFloat(player.stats.percentageStarter);
-      var goals = parseFloat(player.stats.sumGoals)+1;
-      if(!rate || !selection || !goals){
-        return '-';
-      }
-      return rate+'*'+selection+'*'+goals+'*100';
-    },
+    getFcNote: function(player){ return fcNote(player); },
   },
 });
 // update myPlayers with data from dataset
