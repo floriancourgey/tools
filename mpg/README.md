@@ -14,4 +14,6 @@ echo -e "players[1] =\n$(cat datasets/2018-fr-20181210.js)" > datasets/2018-fr-2
 ```
 
 # TODO
-- store only players id in localStorage. If the dataset is updated, players in storage will keep their old stats
+- [x] store only players id in localStorage. If the dataset is updated, players in storage will keep their old stats
+- [x] handle all championships (FR, EN, ES)
+- [x] mark players (for next rounds of mercato)
