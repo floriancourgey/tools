@@ -12,11 +12,14 @@
     <div id="unix">
       <app-header></app-header>
       <main class="container" role="main">
+        <div class="alert alert-info text-center" style="padding:25px;">
+          Unmaintained page. Visit <a href="https://blog.floriancourgey.com/2018/12/unix-cheatsheet?ref=floriancourgey.com">https://blog.floriancourgey.com/2018/12/unix-cheatsheet</a> for most up-to-date information.
+        </div>
         <h1>{{l('title')}}</h1>
         <h2>Bash basics</h2>
         <p>
-          <kbd>echo -e "hello\n$(cat file)" > file</kbd> prepend to file
-          <kbd>echo "hello" >> file</kbd> append to file
+          <kbd>echo -e "hello\n$(cat file)" > file</kbd> prepend to file<br>
+          <kbd>echo "hello" >> file</kbd> append to file<br>
           <kbd>wget https://myfile.com -O output</kbd> save a web file to disk
         </p>
         <h2>grep (find in file and files)</h2>
