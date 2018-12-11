@@ -16,7 +16,10 @@ $(function(){
     // columns header
     columns: [
       {searchable: false, orderable: false, render: function(data, type, player){
-        return '<button class="btn btn-xs btn-default" onclick="app.addToMyTeamWithId(\''+player.id+'\')">Add</button>';
+        var html = '';
+        html += '<button class="btn btn-xs btn-primary" onclick="app.addToMyTeamWithId(\''+player.id+'\')">Add</button>';
+        html += '<button class="btn btn-xs btn-default" onclick="app.markId(this, \''+player.id+'\')">Mark</button>';
+        return html;
       }},
       {render:function(data, row, player){
         var f = player.firstname || '';
@@ -139,6 +142,21 @@ const app = new App({
       return true;
     },
     getFcNote: function(player){ return fcNote(player); },
+    markId: function(element, playerId){
+      var parentRow = $(element).parents('tr');
+      var className = 'marked';
+      var key = 'com.floriancourgey.mpg.marked';
+      var marked = getJsonFromStorage(key) || [];
+      if(marked.contains(playerId)){
+        var index = marked.indexOf(playerId);
+        marked.splice(index, 1);
+        parentRow.removeClass(className);
+      } else {
+        marked.push(playerId);
+        parentRow.addClass(className);
+      }
+      setJsonInStorage(key, marked);
+    }
   },
 });
 // update myPlayers with data from dataset
