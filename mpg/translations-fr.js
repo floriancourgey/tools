@@ -6,6 +6,11 @@ translations['fr'] = {
     Ils seront ensuite dispos dans un tableau avec plus de stats.<br>\
     Tu peux chercher par nom, poste ou club.<br>\
     Ta team est sauvegardee dans ton browser, tu peux partir et revenir anytime ! #swag',
+  'championship': 'Championnat',
+  'championship.select': 'Sélectionne un Championnat',
+  'france': 'France',
+  'england': 'Angleterre',
+  'spain': 'Espagne',
   'table.actions': 'Actions',
   'table.id': 'id',
   'table.Nom': 'Nom',

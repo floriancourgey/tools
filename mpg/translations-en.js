@@ -6,6 +6,11 @@ translations['en'] = {
     Then, they will be available in this table, with a deeper analysis.<br>\
     You may search by name, position or team.<br>\
     Your team will be persisted in your browser, you can leave and come back anytime!',
+  'championship': 'Championship',
+  'championship.select': 'Select a Championship',
+  'france': 'France',
+  'england': 'England',
+  'spain': 'Spain',
   'table.actions': 'Actions',
   'table.id': 'id',
   'table.name': 'Name',

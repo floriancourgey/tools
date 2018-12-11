@@ -11,7 +11,7 @@ function fcNote(player){
 datatable = null;
 $(function(){
   datatable = $('#mercato').DataTable( {
-    data: players,
+    data: [],//players,
     dom: '<"wrapper"fitlp>',
     // columns header
     columns: [
@@ -75,17 +75,40 @@ $(function(){
   });
 });
 
+// update on 20181210 to add other Leagues
+var myPlayersFromLigue1 = getJsonFromStorage('com.floriancourgey.mpg.my_team');
+if(myPlayersFromLigue1){
+  setJsonInStorage('com.floriancourgey.mpg.my_team_1', myPlayersFromLigue1);
+  localStorage.removeItem('com.floriancourgey.mpg.my_team');
+}
+
 // create Vue app
 const app = new App({
   el: '#mpg',
   data : {
+    championshipId: null,
     filter: {'id':'','firstname':'','lastname':''},
     teams: teams,
-    players: players,
+    players: [],//players,
     positions: positions,
-    myPlayers: getJsonFromStorage('com.floriancourgey.mpg.my_team') || [],
+    myPlayers: [],//getJsonFromStorage('com.floriancourgey.mpg.my_team') || [],
   },
   methods:{
+    onChampionshipChange: function(){
+      this.championshipId = parseInt(this.championshipId);
+      if(this.championshipId < 1){
+        return;
+      }
+      // update datatable mercato
+      datatable.clear();
+      datatable.rows.add(players[this.championshipId]);
+      datatable.draw();
+      // update vue players
+      this.players = players[this.championshipId];
+      // update vue my players
+      var key = 'com.floriancourgey.mpg.my_team_'+this.championshipId;
+      this.myPlayers = getJsonFromStorage(key) || [];
+    },
     isInMyTeam: function(player){
       for(var p of this.myPlayers){
         if(p.id == player.id) return true;
@@ -94,10 +117,11 @@ const app = new App({
     },
     addToMyTeam: function(player){
       this.myPlayers.push(player);
-      setJsonInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
+      var key = 'com.floriancourgey.mpg.my_team_'+this.championshipId;
+      setJsonInStorage(key, this.myPlayers);
     },
     addToMyTeamWithId: function(playerId){
-      var player = players.find(function(element) {
+      var player = this.players.find(function(element) {
         return playerId === element.id;
       });
       return this.addToMyTeam(player);
@@ -106,7 +130,8 @@ const app = new App({
       var index = this.myPlayers.indexOf(player);
       if (index > -1) {
         this.myPlayers.splice(index, 1);
-        setJsonInStorage('com.floriancourgey.mpg.my_team', this.myPlayers);
+        var key = 'com.floriancourgey.mpg.my_team_'+this.championshipId;
+        setJsonInStorage(key, this.myPlayers);
       }
     },
     showPlayer: function(player){
