@@ -25,3 +25,4 @@ translations['en'] = {
 ## Inspirations
 - https://codebeautify.org/
 - https://www.asciitohex.com/
+- https://www.danstools.com/
