@@ -12,7 +12,7 @@ datatable = null;
 $(function(){
   datatable = $('#mercato').DataTable( {
     data: [],//players,
-    dom: '<"wrapper"fitlp>',
+    dom: 'itlp',
     // columns header
     columns: [
       {searchable: false, orderable: false, render: function(data, type, player){
@@ -38,6 +38,11 @@ $(function(){
     ],
     order: [[ 7, 'desc' ]],
     pageLength: 50,
+    initComplete: function(settings, json) {
+      setTimeout(function(){
+        app.onChampionshipChange();
+      }, 100);
+    }
   });
   // filters TODO refacto
   $('#filter-name').on('keyup change', function () {
@@ -85,11 +90,19 @@ if(myPlayersFromLigue1){
   localStorage.removeItem('com.floriancourgey.mpg.my_team');
 }
 
+// set default championshipId = 1
+var championshipId = getJsonFromStorage('com.floriancourgey.mpg.championshipId');
+if(!championshipId || ![1,2,3].contains(championshipId)){
+  championshipId = 1;
+  setJsonInStorage('com.floriancourgey.mpg.championshipId', championshipId);
+}
+
+
 // create Vue app
 const app = new App({
   el: '#mpg',
   data : {
-    championshipId: null,
+    championshipId: championshipId,
     filter: {'id':'','firstname':'','lastname':''},
     teams: teams,
     players: [],//players,
@@ -111,6 +124,8 @@ const app = new App({
       // update vue my players
       var key = 'com.floriancourgey.mpg.my_team_'+this.championshipId;
       this.myPlayers = getJsonFromStorage(key) || [];
+      // update local storage championshipId
+      setJsonInStorage('com.floriancourgey.mpg.championshipId', this.championshipId);
     },
     isInMyTeam: function(player){
       for(var p of this.myPlayers){

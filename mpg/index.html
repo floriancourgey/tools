@@ -18,10 +18,13 @@
       <app-header></app-header>
       <main role="main" class="container">
         <h1>{{l('title')}} <small>{{l('updatedOn')}} 20181210</small></h1>
+        
+        <div v-show="!championshipId" class="alert alert-warning">
+          You have to select a championship with the below menu:
+        </div>
 
-        {{l('championship')}}
+        {{l('championship.select')}}
         <select v-model="championshipId" @change="onChampionshipChange()">
-          <option>{{l('championship.select')}}</option>
           <option value="1">{{l('france')}} - Ligue 1</option>
           <option value="2">{{l('england')}} - Premier League</option>
           <option value="3">{{l('spain')}} - Liga</option>
