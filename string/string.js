@@ -21,6 +21,8 @@ var app = new App({
     reverse: function () { this.message = this.message.split('').reverse().join('') },
     base64encode: function () { this.message = btoa(this.message) },
     base64decode: function () { this.message = atob(this.message) },
+    urlEncode: function(){ this.message = encodeURIComponent(this.message)},
+    urlDecode: function(){ this.message = decodeURIComponent(this.message)},
     trimLines: function () {
       var newMessage = "";
       var lines = this.message.split('\n');
@@ -33,8 +35,6 @@ var app = new App({
       }
       this.message = newMessage;
     },
-    alphabetazAZ09: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' },
-    alphabetazAZ09Sym: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&*+-=?@^_.' },
     updateAlphabet: function(){
       this.alphabet = '';
       if(this.alphabetaz) this.alphabet += 'abcdefghijklmnopqrstuvwxyz';
