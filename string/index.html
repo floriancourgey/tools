@@ -74,10 +74,10 @@
           <div class="col-sm-10">
             <p>
               Alphabet:
-              <app-action @click.native="alphabetaz" text="a-z"></app-action>
-              <app-action @click.native="alphabetazAZ" text="a-zA-Z"></app-action>
-              <app-action @click.native="alphabetazAZ09" text="a-zA-Z0-9"></app-action>
-              <app-action @click.native="alphabetazAZ09Sym" text="a-zA-Z0-9!#.."></app-action><br/>
+              <label class="btn btn-default btn-xs"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetaz">a-z</label>
+              <label class="btn btn-default btn-xs"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetAZ">A-Z</label>
+              <label class="btn btn-default btn-xs"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabet09">0-9</label>
+              <label class="btn btn-default btn-xs"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetSym">!#..</label>
               <input v-model="alphabet" style="width:100%;">
               with length <input v-model="length" type="number">
               <br/>

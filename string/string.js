@@ -8,6 +8,10 @@ var app = new App({
     byY: '-',
     flags: 'gim',
     dontRemoveX: '[0-9]',
+    alphabetaz: true,
+    alphabetAZ: true,
+    alphabet09: true,
+    alphabetSym: false,
   },
   methods: {
     clear: function (){ this.message = '' },
@@ -29,10 +33,19 @@ var app = new App({
       }
       this.message = newMessage;
     },
-    alphabetaz: function(event){ this.alphabet = 'abcdefghijklmnopqrstuvwxyz' },
-    alphabetazAZ: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' },
     alphabetazAZ09: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' },
     alphabetazAZ09Sym: function(){ this.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&*+-=?@^_.' },
+    updateAlphabet: function(){
+      this.alphabet = '';
+      if(this.alphabetaz) this.alphabet += 'abcdefghijklmnopqrstuvwxyz';
+      if(!this.alphabetaz) this.alphabet = this.alphabet.replace(/[a-z]/g, '');
+      if(this.alphabetAZ) this.alphabet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if(!this.alphabetAZ) this.alphabet = this.alphabet.replace(/[A-Z]/g, '');
+      if(this.alphabet09) this.alphabet += '0123456789';
+      if(!this.alphabet09) this.alphabet = this.alphabet.replace(/[0-9]/g, '');
+      if(this.alphabetSym) this.alphabet += '!#$%&*+-=?@^_.';
+      if(!this.alphabetSym) this.alphabet = this.alphabet.replace(/[!#$%&*+\-=?@^_\.]/g, '');
+    },
     generate: function(){
       var generated = "";
       for (var i = 0; i < this.length; i++){
