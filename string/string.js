@@ -12,6 +12,7 @@ var app = new App({
     alphabetAZ: true,
     alphabet09: true,
     alphabetSym: false,
+    caesarOffset: 13,
   },
   methods: {
     clear: function (){ this.message = '' },
@@ -23,6 +24,13 @@ var app = new App({
     base64decode: function () { this.message = atob(this.message) },
     urlEncode: function(){ this.message = encodeURIComponent(this.message)},
     urlDecode: function(){ this.message = decodeURIComponent(this.message)},
+    caesar: function(){
+      this.message = this.message.replace(/[a-zA-Z]/g,function(c){
+        var start = (c <= 'Z') ? 65 : 97;
+        return String.fromCharCode(start + (c.charCodeAt(0) - start + app.caesarOffset) % 26);
+      });
+
+    },
     trimLines: function () {
       var newMessage = "";
       var lines = this.message.split('\n');
