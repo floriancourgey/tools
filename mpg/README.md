@@ -13,6 +13,11 @@ wget https://api.monpetitgazon.com/stats/championship/1/2018 -O datasets/2018-fr
 echo -e "players[1] =\n$(cat datasets/2018-fr-20181210.js)" > datasets/2018-fr-20181210.js
 ```
 
+Where:
+- `1` is the French Ligue 1 id
+- `2` is the English Premier League id
+- `3` is the Spanish Liga id
+
 # TODO
 - [x] store only players id in localStorage. If the dataset is updated, players in storage will keep their old stats
 - [x] handle all championships (FR, EN, ES)
