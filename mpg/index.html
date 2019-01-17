@@ -17,18 +17,28 @@
     <div id="mpg">
       <app-header></app-header>
       <main role="main" class="container">
-        <h1>{{l('title')}} <small>{{l('updatedOn')}} 20181210</small></h1>
+        <h1>{{l('title')}} <small v-if="lastStatsUpdate">{{l('updatedOn')}} {{lastStatsUpdate.format('M/D/YYYY @ HH:mm')}}</small></h1>
+
+        <div class="alert alert-warning">
+          Starting from 1/17/2019, this page requires an active Internet connection, in order to refresh players statistics.
+        </div>
 
         <div v-show="!championshipId" class="alert alert-warning">
           You have to select a championship with the below menu:
         </div>
 
-        {{l('championship.select')}}
-        <select v-model="championshipId" @change="onChampionshipChange()">
-          <option value="1">{{l('france')}} - Ligue 1</option>
-          <option value="2">{{l('england')}} - Premier League</option>
-          <option value="3">{{l('spain')}} - Liga</option>
-        </select>
+        <div class="">
+          {{l('championship.select')}}
+          <select v-model="championshipId" @change="refreshStats()">
+            <option value="1">{{l('france')}} - Ligue 1</option>
+            <option value="2">{{l('england')}} - Premier League</option>
+            <option value="3">{{l('spain')}} - Liga</option>
+          </select>
+        </div>
+        <br>
+        <div class="">
+          Refresh statistics for season <input type="number" v-model="season"> <button v-on:click="refreshStats">Go</button>
+        </div>
 
         <h2>My team</h2>
         <p v-if="!myPlayers || myPlayers.length<1" v-html="l('help')">
@@ -128,6 +138,7 @@
       });
     </script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../vendor/moment-2.23.0.min.js" charset="utf-8"></script>
     <script src="../app.js" charset="utf-8"></script>
     <script src="../polyfill.js" charset="utf-8"></script>
     <script src="../vendor/datatable-1.10.19/jquery.dataTables.min.js" charset="utf-8"></script>
@@ -135,12 +146,6 @@
     <script src="2018-positions.js" charset="utf-8"></script>
     <script src="2018-championships.js" charset="utf-8"></script>
     <script src="2018-teams.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      var players = {};
-    </script>
-    <script src="datasets/2018-fr-20181025.js" charset="utf-8"></script>
-    <script src="datasets/2018-en-20181225.js" charset="utf-8"></script>
-    <script src="datasets/2018-es-20181210.js" charset="utf-8"></script>
     <script src="translations-en.js" charset="utf-8"></script>
     <script src="translations-fr.js" charset="utf-8"></script>
     <script src="mpg.js" charset="utf-8"></script>

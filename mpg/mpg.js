@@ -40,7 +40,7 @@ $(function(){
     pageLength: 50,
     initComplete: function(settings, json) {
       setTimeout(function(){
-        app.onChampionshipChange();
+        app.refreshStats();
       }, 100);
     }
   });
@@ -108,8 +108,18 @@ const app = new App({
     players: [],//players,
     positions: positions,
     myPlayers: [],//getJsonFromStorage('com.floriancourgey.mpg.my_team') || [],
+    season: 2018,
+    lastStatsUpdate: null,
   },
   methods:{
+    refreshStats: function(){
+      var url = 'https://api.monpetitgazon.com/stats/championship/'+this.championshipId+'/'+this.season;
+      $.getJSON(url, function(data){
+        app.players = data;
+        app.onChampionshipChange();
+        app.lastStatsUpdate = moment();
+      });
+    },
     onChampionshipChange: function(){
       this.championshipId = parseInt(this.championshipId);
       if(this.championshipId < 1){
@@ -117,10 +127,10 @@ const app = new App({
       }
       // update datatable mercato
       datatable.clear();
-      datatable.rows.add(players[this.championshipId]);
+      datatable.rows.add(this.players);
       datatable.draw();
       // update vue players
-      this.players = players[this.championshipId];
+      // this.players = players[this.championshipId];
       // update vue my players
       var key = 'com.floriancourgey.mpg.my_team_'+this.championshipId;
       this.myPlayers = getJsonFromStorage(key) || [];
