@@ -26,3 +26,4 @@ translations['en'] = {
 - https://codebeautify.org/
 - https://www.asciitohex.com/
 - https://www.danstools.com/
+- https://www.branah.com/ascii-converter
