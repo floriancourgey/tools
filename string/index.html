@@ -57,8 +57,8 @@
             <app-action @click.native="urlEncode" text="url encode"></app-action>
             <app-action @click.native="urlDecode" text="url decode"></app-action>
             &nbsp;&nbsp;&nbsp;
-            <span @click="caesar" class="btn btn-default btn-xs">Caesar with offset</span><input style="width: 50px;text-align: center;" type="number" v-model="caesarOffset"/>
-
+            <app-action @click.native="message = caesar(message, caesarOffset)" text="Caesar with offset"></app-action><input style="width: 50px;text-align: center;" type="number" v-model="caesarOffset"/>
+            <app-action @click.native="caesarBruteforce" text="Caesar bruteforce" title="Bruteforce all 26 possiblities"></app-action>
           </div>
         </div>
         <div class="row">

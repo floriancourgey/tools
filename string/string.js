@@ -24,12 +24,19 @@ var app = new App({
     base64decode: function () { this.message = atob(this.message) },
     urlEncode: function(){ this.message = encodeURIComponent(this.message)},
     urlDecode: function(){ this.message = decodeURIComponent(this.message)},
-    caesar: function(){
-      this.message = this.message.replace(/[a-zA-Z]/g,function(c){
+    caesar: function(s, offset){
+      return s.replace(/[a-zA-Z]/g,function(c){
         var start = (c <= 'Z') ? 65 : 97;
-        return String.fromCharCode(start + (c.charCodeAt(0) - start + app.caesarOffset) % 26);
+        return String.fromCharCode(start + (c.charCodeAt(0) - start + offset) % 26);
       });
-
+    },
+    caesarBruteforce: function(){
+      var string = this.message;
+      newMessage = '';
+      for(var i=0 ; i<26; i++){
+        newMessage += i+'. '+this.caesar(string, i)+'\n';
+      }
+      app.message = newMessage;
     },
     trimLines: function () {
       var newMessage = "";
