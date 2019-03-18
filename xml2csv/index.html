@@ -52,18 +52,20 @@
         </table>
         <button type="button" @click="generate">Generate</button>
         <h2>Result</h2>
-        <table class="table table-responsive table-striped table-bordered">
-          <thead>
-            <tr>
-              <th v-for="col in cols">{{ col.title }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(res,i) in cols[0].results">
-              <td v-for="col in cols">{{col.results[i]}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th v-for="col in cols">{{ col.title }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(res,i) in cols[0].results">
+                <td v-for="col in cols">{{col.results[i]}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </main>
       <app-footer></app-footer>
     </div>
