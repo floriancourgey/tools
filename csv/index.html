@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV ETL by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+  </head>
+  <body>
+    <div id="xml2csv">
+      <app-header></app-header>
+      <main role="main" class="container">
+        <h1>XML to CSV - ETL</h1>
+        <h2>XML</h2>
+        <textarea v-model="message" rows="8" class="form-control">
+        </textarea>
+
+        <h2>Definition</h2>
+        <div class="form-group">
+          <label for="">Column separator</label>
+          <input type="text" v-model="columnSep" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Line separator</label>
+          <input type="text" v-model="lineSep" class="form-control">
+        </div>
+        <button type="button" @click="cols.push({})">Add column definition</button>
+        <button type="button" @click="generate">Generate</button>
+        <h2>Result</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th v-for="col in cols">{{ col }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="line in results">
+                <td v-for="value in line">{{value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <app-footer></app-footer>
+    </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="../polyfill.js" charset="utf-8"></script>
+    <script src="../samples/sample1.mi9.cust.csv.js" charset="utf-8"></script>
+    <script src="csv.js" charset="utf-8"></script>
+  </body>
+</html>

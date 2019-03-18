@@ -51,6 +51,7 @@ const appHeader = {
               <li><a :href="url(\'crack\')" style="text-decoration:line-through">Crack & Hack</a></li>\
               <li><a :href="url(\'mpg\')">MPG</a></li>\
               <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
+              <li><a :href="url(\'csv\')">CSV</a></li>\
             </ul>'+
             // NAVBAR RIGHT
             '<ul class="nav navbar-nav navbar-right">\
