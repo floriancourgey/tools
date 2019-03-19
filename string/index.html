@@ -82,6 +82,14 @@
         </div>
         <div class="row">
           <div class="col-sm-2">
+            <h2>JSON</h2>
+          </div>
+          <div class="col-sm-10">
+            <app-action @click.native="xml2Jxon" text="XML 2 JXON"></app-action>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
             <h2>Password gen</h2>
           </div>
           <div class="col-sm-10">
@@ -103,6 +111,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jxon@2.0.0-beta.5/jxon.min.js"></script>
     <script src="../samples/sample1.txt.js" charset="utf-8"></script>
     <script src="../samples/sample1.xml.js" charset="utf-8"></script>
     <script src="../samples/sample1.json.js" charset="utf-8"></script>

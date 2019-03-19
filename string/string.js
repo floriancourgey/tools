@@ -50,6 +50,9 @@ var app = new App({
       }
       this.message = newMessage;
     },
+    xml2Jxon: function(){
+      this.message = JSON.stringify(JXON.stringToJs(this.message), null, 2);
+    },
     updateAlphabet: function(){
       this.alphabet = '';
       if(this.alphabetaz) this.alphabet += 'abcdefghijklmnopqrstuvwxyz';
