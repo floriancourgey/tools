@@ -28,6 +28,8 @@ var app = new App({
         }
       );
     },
+    camelCase: function () { this.message = _(this.message).camelCase() },
+    snakeCase: function () { this.message = _(this.message).snakeCase() },
     reverse: function () { this.message = this.message.split('').reverse().join('') },
     base64encode: function () { this.message = btoa(this.message) },
     base64decode: function () { this.message = atob(this.message) },
