@@ -17,14 +17,14 @@ var app = new App({
   methods: {
     clear: function (){ this.message = '' },
     load: function(x){ this.message = x },
-    upper: function () { this.message = this.message.toUpperCase() },
-    lower: function () { this.message = this.message.toLowerCase() },
+    upper: function () { this.message = _(this.message).toUpper() },
+    lower: function () { this.message = _(this.message).toLower() },
     startCase: function() {
       // from https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
       this.message = this.message.replace(
         /\w\S*/g,
         function(txt) {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          return _(txt.charAt(0)).toUpper() + _(txt.substr(1)).toLower();
         }
       );
     },
@@ -96,7 +96,7 @@ var app = new App({
       this.message = matches.join('');
     },
     basicSlug: function(){
-      this.message = this.message.replace(/[ \n\s\t]/gi, '-').replace(/-+/gi, '-').toLowerCase();
+      this.message = _(this.message.replace(/[ \n\s\t]/gi, '-').replace(/-+/gi, '-')).toLower();
     },
   },
   computed: {
