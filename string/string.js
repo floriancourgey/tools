@@ -19,6 +19,15 @@ var app = new App({
     load: function(x){ this.message = x },
     upper: function () { this.message = this.message.toUpperCase() },
     lower: function () { this.message = this.message.toLowerCase() },
+    startCase: function() {
+      // from https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
+      this.message = this.message.replace(
+        /\w\S*/g,
+        function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+      );
+    },
     reverse: function () { this.message = this.message.split('').reverse().join('') },
     base64encode: function () { this.message = btoa(this.message) },
     base64decode: function () { this.message = atob(this.message) },
