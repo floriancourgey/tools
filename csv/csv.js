@@ -1,7 +1,7 @@
 var app = new App({
   el: '#xml2csv',
   data:{
-    message: sample,
+    message: window.sample || '',
     xml: null,
     columnSep: '<|>',
     columnSepUseRegex: false, // RegExp needed for special char like '\n'
