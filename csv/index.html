@@ -52,7 +52,7 @@
                 Use regex (useful for \t)
               </label>
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Select a separator <span class="caret"></span>
+                Common separators <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li><a href="javascript:;" @click="columnSep=','">,</a></li>
@@ -76,6 +76,13 @@
                 <input type="checkbox" style="margin: 0;" v-model="lineSepUseRegex">
                 Use regex (useful for \n)
               </label>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Common separators <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="javascript:;" @click="lineSep='\\n';lineSepUseRegex=true;">\n UNIX</a></li>
+                <li><a href="javascript:;" @click="lineSep='\\r\\n';lineSepUseRegex=true;">\r\n Windows</a></li>
+              </ul>
             </div>
           </div><!-- /input-group -->
         </div>

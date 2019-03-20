@@ -4,27 +4,29 @@ var app = new App({
     message: sample,
     xml: null,
     columnSep: '<|>',
-    columnSepUseRegex: false,
+    columnSepUseRegex: false, // RegExp needed for special char like '\n'
     lineSep: '\\n',
-    lineSepUseRegex: true,
+    lineSepUseRegex: true, // RegExp needed for special char like '\t'
     cols: [],
     results:[],
   },
   methods:{
+    getColumnSep: function(){
+      return (this.columnSepUseRegex) ?
+        new RegExp(this.columnSep) :
+        this.columnSep;
+    },
+    getLineSep: function(){
+      return (this.lineSepUseRegex) ?
+        new RegExp(this.lineSep) :
+        this.lineSep;
+    },
     generate: function(){
       this.results = [];
       this.cols = [];
       // parse
-      var lineSep = this.lineSep;
-      // RegExp needed for special char like '\n'
-      if(this.lineSepUseRegex){
-        lineSep = new RegExp(lineSep);
-      }
-      var columnSep = this.columnSep;
-      // RegExp needed for special char like '\t'
-      if(this.columnSepUseRegex){
-        columnSep = new RegExp(columnSep);
-      }
+      var lineSep = this.getLineSep();
+      var columnSep = this.getColumnSep();
       var lines = this.message.split(lineSep);
       var header = lines.shift();
       for(var s of header.split(this.columnSep)){
@@ -56,8 +58,10 @@ var app = new App({
       }
     },
     loadHeader: function(header){
-      var finalHeader = header.join(this.columnSep);
-      this.message = finalHeader + this.lineSep + this.message;
+      var columnSep = this.columnSep.replace('\\t', '\t').replace('\\n', '\n');
+      var lineSep = this.lineSep.replace('\\t', '\t').replace('\\n', '\n');
+      var finalHeader = header.join(columnSep);
+      this.message = finalHeader + (lineSep) + this.message;
     }
   }
 });
