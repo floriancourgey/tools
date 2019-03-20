@@ -19,7 +19,7 @@ var app = new App({
     load: function(x){ this.message = x },
     upper: function () { this.message = _(this.message).toUpper() },
     lower: function () { this.message = _(this.message).toLower() },
-    startCase: function() {
+    capitalize: function() {
       // from https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
       this.message = this.message.replace(
         /\w\S*/g,
