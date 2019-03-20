@@ -4,7 +4,9 @@ var app = new App({
     message: sample,
     xml: null,
     columnSep: '<|>',
+    columnSepUseRegex: false,
     lineSep: '\\n',
+    lineSepUseRegex: true,
     cols: [],
     results:[],
   },
@@ -13,8 +15,16 @@ var app = new App({
       this.results = [];
       this.cols = [];
       // parse
-      var lineSep = new RegExp(this.lineSep); // RegExp needed for special char like '\n'
-      var columnSep = (this.columnSep); // RegExp needed for special char like '\n'
+      var lineSep = this.lineSep;
+      // RegExp needed for special char like '\n'
+      if(this.lineSepUseRegex){
+        lineSep = new RegExp(lineSep);
+      }
+      var columnSep = this.columnSep;
+      // RegExp needed for special char like '\t'
+      if(this.columnSepUseRegex){
+        columnSep = new RegExp(columnSep);
+      }
       var lines = this.message.split(lineSep);
       var header = lines.shift();
       for(var s of header.split(this.columnSep)){
@@ -44,7 +54,10 @@ var app = new App({
           this.cols[i].results.push(result);
         }
       }
+    },
+    loadHeader: function(header){
+      var finalHeader = header.join(this.columnSep);
+      this.message = finalHeader + this.lineSep + this.message;
     }
   }
 });
-app.generate();

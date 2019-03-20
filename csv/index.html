@@ -12,22 +12,74 @@
     <div id="xml2csv">
       <app-header></app-header>
       <main role="main" class="container">
-        <h1>XML to CSV - ETL</h1>
-        <h2>XML</h2>
+        <h1>CSV to table helper</h1>
+        <h2>Input text</h2>
+        <button type="button" class="btn btn-default" @click="message=''">Clear</button>
         <textarea v-model="message" rows="8" class="form-control">
         </textarea>
 
-        <h2>Definition</h2>
+        <h2>Define separators</h2>
+        <div class="form-group">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Load a template <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:;" @click="columnSep=',';columnSepUseRegex=false;lineSep='\\n';lineSepUseRegex=true;">CSV US (,)</a></li>
+              <li><a href="javascript:;" @click="columnSep=';';columnSepUseRegex=false;lineSep='\\n';lineSepUseRegex=true;">CSV Europe (;)</a></li>
+              <li><a href="javascript:;" @click="columnSep='\\t';columnSepUseRegex=true;lineSep='\\n';lineSepUseRegex=true;">TSV</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="javascript:;" @click="columnSep='<|>';columnSepUseRegex=false;lineSep='\\n';lineSepUseRegex=true;">Mi9 Raymark</a></li>
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Add a header <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:;" @click="loadHeader(headers.raymark.STDCUSTOUT)">Mi9 Raymark - STDCUSTOUT</a></li>
+              <li><a href="javascript:;" @click="loadHeader(headers.raymark.STDOUTSALES)">Mi9 Raymark - STDOUTSALES</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="form-group">
           <label for="">Column separator</label>
-          <input type="text" v-model="columnSep" class="form-control">
+          <div class="input-group">
+            <input type="text" v-model="columnSep" class="form-control">
+            <div class="input-group-btn">
+              <label type="button" class="btn btn-default">
+                <input type="checkbox" style="margin: 0;" v-model="columnSepUseRegex">
+                Use regex (useful for \t)
+              </label>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Select a separator <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="javascript:;" @click="columnSep=','">,</a></li>
+                <li><a href="javascript:;" @click="columnSep=';'">;</a></li>
+                <li><a href="javascript:;" @click="columnSep='|'">|</a></li>
+                <li><a href="javascript:;" @click="columnSep='%'">%</a></li>
+                <li><a href="javascript:;" @click="columnSep='^'">^</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="javascript:;" @click="columnSep='<|>'"><|></a></li>
+                <li><a href="javascript:;" @click="columnSep='\\t'">\t</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+          </div><!-- /input-group -->
         </div>
         <div class="form-group">
           <label for="">Line separator</label>
-          <input type="text" v-model="lineSep" class="form-control">
+          <div class="input-group">
+            <input type="text" v-model="lineSep" class="form-control">
+            <div class="input-group-btn">
+              <label type="button" class="btn btn-default">
+                <input type="checkbox" style="margin: 0;" v-model="lineSepUseRegex">
+                Use regex (useful for \n)
+              </label>
+            </div>
+          </div><!-- /input-group -->
         </div>
-        <button type="button" @click="cols.push({})">Add column definition</button>
-        <button type="button" @click="generate">Generate</button>
+        <button type="button" class="btn btn-primary" @click="generate">Generate Result</button>
         <h2>Result</h2>
         <div class="table-responsive">
           <table class="table table-striped table-bordered">
