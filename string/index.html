@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>String tools by floriancourgey.com</title>
-    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="string.css">
   </head>
   <body>
     <div id="app-string">
-      <app-header></app-header>
+      <app-header2></app-header2>
       <main role="main" class="container">
         <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
         <p>
-          <app-action @click.native="clear" text="clear" icon="erase"></app-action>
-          <app-action @click.native="load(sample1txt)" text="lorem ipsum" icon="font"></app-action>
-          <app-action @click.native="load(sample1xml)" text="&lt;&gt; sample XML"></app-action>
-          <app-action @click.native="load(sample1json)" text="{} sample JSON"></app-action>
+          <app-action2 @click.native="clear" text="clear" icon="erase"></app-action2>
+          <app-action2 @click.native="load(sample1txt)" text="lorem ipsum" icon="font"></app-action2>
+          <app-action2 @click.native="load(sample1xml)" text="&lt;&gt; sample XML"></app-action2>
+          <app-action2 @click.native="load(sample1json)" text="{} sample JSON"></app-action2>
         </p>
-        <textarea v-model="message" rows="8" style="width:100%;"></textarea>
+        <textarea class="form-control" v-model="message" rows="8" style="width:100%;"></textarea>
         <div class="row">
           <div class="col-sm-2">
             <h2>Statistics</h2>
@@ -39,14 +39,14 @@
           </div>
           <div class="col-sm-10">
             <p>
-              <app-action @click.native="upper" text="upper" icon="chevron-up" title="Convert text to uppercase (using lodash _.toUpper)"></app-action>
-              <app-action @click.native="lower" text="lower" icon="chevron-down" title="Convert text to uppercase (using lodash _.toLower)"></app-action>
-              <app-action @click.native="capitalize" text="capitalize" icon="text-size" title="Convert text to first letter of words in uppercase, other letters in lowercase"></app-action>
-              <app-action @click.native="camelCase" text="camelCase" title="Convert text to camelCase (using lodash _.camelCase)"></app-action>
-              <app-action @click.native="snakeCase" text="snake_case" title="Convert text to snake_case (using lodash _.snakeCase)"></app-action>
-              <app-action @click.native="reverse" text="reverse" icon="sort-by-alphabet-alt" title="Convert message ABC to CBA"></app-action>
-              <app-action @click.native="reverseLines" text="reverse lines" icon="sort-by-attributes-alt" title="Reverse lines 123 to 321"></app-action>
-              <app-action @click.native="trimLines" text="trim each line" title="Remove spaces at the beginning and the end of each line"></app-action>
+              <app-action2 @click.native="upper" text="upper" icon="chevron-up" title="Convert text to uppercase (using lodash _.toUpper)"></app-action2>
+              <app-action2 @click.native="lower" text="lower" icon="chevron-down" title="Convert text to uppercase (using lodash _.toLower)"></app-action2>
+              <app-action2 @click.native="capitalize" text="capitalize" icon="text-size" title="Convert text to first letter of words in uppercase, other letters in lowercase"></app-action2>
+              <app-action2 @click.native="camelCase" text="camelCase" title="Convert text to camelCase (using lodash _.camelCase)"></app-action2>
+              <app-action2 @click.native="snakeCase" text="snake_case" title="Convert text to snake_case (using lodash _.snakeCase)"></app-action2>
+              <app-action2 @click.native="reverse" text="reverse" icon="sort-by-alphabet-alt" title="Convert message ABC to CBA"></app-action2>
+              <app-action2 @click.native="reverseLines" text="reverse lines" icon="sort-by-attributes-alt" title="Reverse lines 123 to 321"></app-action2>
+              <app-action2 @click.native="trimLines" text="trim each line" title="Remove spaces at the beginning and the end of each line"></app-action2>
             </p>
           </div>
         </div>
@@ -55,14 +55,14 @@
             <h2>Encoding/decoding</h2>
           </div>
           <div class="col-sm-10">
-            <app-action @click.native="base64encode" text="base64 encode" title="Encode text via Base64 (using JS btoa)"></app-action>
-            <app-action @click.native="base64decode" text="base64 decode" title="Decode text via Base64 (using JS atob)"></app-action>
+            <app-action2 @click.native="base64encode" text="base64 encode" title="Encode text via Base64 (using JS btoa)"></app-action2>
+            <app-action2 @click.native="base64decode" text="base64 decode" title="Decode text via Base64 (using JS atob)"></app-action2>
             &nbsp;&nbsp;&nbsp;
-            <app-action @click.native="urlEncode" text="url encode" title="Encode text to URL safe (using JS encodeURIComponent)"></app-action>
-            <app-action @click.native="urlDecode" text="url decode" title="Decode URL safe (using JS decodeURIComponent)"></app-action>
+            <app-action2 @click.native="urlEncode" text="url encode" title="Encode text to URL safe (using JS encodeURIComponent)"></app-action2>
+            <app-action2 @click.native="urlDecode" text="url decode" title="Decode URL safe (using JS decodeURIComponent)"></app-action2>
             &nbsp;&nbsp;&nbsp;
-            <app-action @click.native="message = caesar(message, caesarOffset)" text="Caesar with offset" title="Caesar on each letter of message"></app-action><input style="width: 50px;text-align: center;" type="number" v-model="caesarOffset"/>
-            <app-action @click.native="caesarBruteforce" text="Caesar bruteforce" title="Bruteforce all 26 possiblities"></app-action>
+            <app-action2 @click.native="message = caesar(message, caesarOffset)" text="Caesar with offset" title="Caesar on each letter of message"></app-action2><input style="width: 50px;text-align: center;" type="number" v-model="caesarOffset"/>
+            <app-action2 @click.native="caesarBruteforce" text="Caesar bruteforce" title="Bruteforce all 26 possiblities"></app-action2>
           </div>
         </div>
         <div class="row">
@@ -75,12 +75,12 @@
               <input class="form-control input-sm" v-model="replaceX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>)
               <input class="form-control input-sm" v-model="flags"> by
               <input class="form-control input-sm" v-model="byY">
-              <app-action @click.native="replaceXbyY" text="Go and replace"></app-action>
+              <app-action2 @click.native="replaceXbyY" text="Go and replace"></app-action2>
               <br/>
               Remove everything except this regex
               <input class="form-control input-sm" v-model="dontRemoveX"> with flags (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Parameters">?</a>)
               <input class="form-control input-sm" v-model="flags">
-              <app-action @click.native="removeAllButX" text="Go and remove"></app-action>
+              <app-action2 @click.native="removeAllButX" text="Go and remove"></app-action2>
             </p>
           </div>
         </div>
@@ -89,7 +89,7 @@
             <h2>Slug</h2>
           </div>
           <div class="col-sm-10">
-            <app-action @click.native="basicSlug" text="Basic slug (lowercase, spaces to -)"></app-action>
+            <app-action2 @click.native="basicSlug" text="Basic slug (lowercase, spaces to -)"></app-action2>
           </div>
         </div>
         <div class="row">
@@ -97,7 +97,7 @@
             <h2>JSON</h2>
           </div>
           <div class="col-sm-10">
-            <app-action @click.native="xml2Jxon" text="XML 2 JXON" title="Convert an XML object to its JXON counterpart (using github tyrasd/jxon)"></app-action>
+            <app-action2 @click.native="xml2Jxon" text="XML 2 JXON" title="Convert an XML object to its JXON counterpart (using github tyrasd/jxon)"></app-action2>
           </div>
         </div>
         <div class="row">
@@ -107,14 +107,14 @@
           <div class="col-sm-10">
             <p class="form-inline">
               Alphabet:
-              <label class="btn btn-default btn-xs" title="Lowercase letters"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetaz">a-z</label>
-              <label class="btn btn-default btn-xs" title="Uppercase letters"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetAZ">A-Z</label>
-              <label class="btn btn-default btn-xs" title="Numbers"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabet09">0-9</label>
-              <label class="btn btn-default btn-xs" title="Symbols !#$%&amp;*+-=?@^_."><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetSym">!#..</label>
+              <label class="btn btn-outline-secondary btn-sm" title="Lowercase letters"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetaz">a-z</label>
+              <label class="btn btn-outline-secondary btn-sm" title="Uppercase letters"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetAZ">A-Z</label>
+              <label class="btn btn-outline-secondary btn-sm" title="Numbers"><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabet09">0-9</label>
+              <label class="btn btn-outline-secondary btn-sm" title="Symbols !#$%&amp;*+-=?@^_."><input v-on:change="updateAlphabet" type="checkbox" v-model="alphabetSym">!#..</label>
               <input v-model="alphabet" class="form-control input-sm" style="display:block;width:100%;">
               with length <input v-model="length" type="number" class="form-control">
               <br/>
-              <app-action @click.native="generate" text="Generate" icon="random"></app-action>
+              <app-action2 @click.native="generate" text="Generate" icon="random"></app-action2>
             </p>
           </div>
         </div><!-- /.row -->
@@ -156,7 +156,8 @@
     <script src="../samples/sample1.json.js" charset="utf-8"></script>
     <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
     <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
-    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="../vendor/popper-1.15.0/popper.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-4.3.1/js/bootstrap.min.js" charset="utf-8"></script>
     <script type="text/javascript">
       $(function () {
         $('[data-toggle="tooltip"]').tooltip();
