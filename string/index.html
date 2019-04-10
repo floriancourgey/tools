@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>String tools by floriancourgey.com</title>
     <link rel="stylesheet" href="../vendor/bootstrap-4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/fontawesome-5.8.1/css/all.min.css">
     <link rel="stylesheet" href="../app.css">
     <link rel="stylesheet" href="string.css">
+    <style media="screen">
+      .btn-sm {
+        padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+      }
+    </style>
   </head>
   <body>
     <div id="app-string">
@@ -15,10 +24,10 @@
       <main role="main" class="container">
         <h1>String tools by <a href="https://floriancourgey.com?ref=floriancourgey.tools" target="_blank">floriancourgey.com</a></h1>
         <p>
-          <app-action2 @click.native="clear" text="clear" icon="erase"></app-action2>
-          <app-action2 @click.native="load(sample1txt)" text="lorem ipsum" icon="font"></app-action2>
-          <app-action2 @click.native="load(sample1xml)" text="&lt;&gt; sample XML"></app-action2>
-          <app-action2 @click.native="load(sample1json)" text="{} sample JSON"></app-action2>
+          <app-action2 @click.native="clear" text="clear" icon="fas fa-eraser"></app-action2>
+          <app-action2 @click.native="load(sample1txt)" text="lorem ipsum" icon="fas fa-file-alt"></app-action2>
+          <app-action2 @click.native="load(sample1xml)" text="sample XML" icon="fas fa-file-code"></app-action2>
+          <app-action2 @click.native="load(sample1json)" text="sample JSON" icon="fab fa-js-square"></app-action2>
         </p>
         <textarea class="form-control" v-model="message" rows="8" style="width:100%;"></textarea>
         <div class="row">
@@ -39,13 +48,13 @@
           </div>
           <div class="col-sm-10">
             <p>
-              <app-action2 @click.native="upper" text="upper" icon="chevron-up" title="Convert text to uppercase (using lodash _.toUpper)"></app-action2>
-              <app-action2 @click.native="lower" text="lower" icon="chevron-down" title="Convert text to uppercase (using lodash _.toLower)"></app-action2>
+              <app-action2 @click.native="upper" text="upper" icon="fas fa-chevron-up" title="Convert text to uppercase (using lodash _.toUpper)"></app-action2>
+              <app-action2 @click.native="lower" text="lower" icon="fas fa-chevron-down" title="Convert text to uppercase (using lodash _.toLower)"></app-action2>
               <app-action2 @click.native="capitalize" text="capitalize" icon="text-size" title="Convert text to first letter of words in uppercase, other letters in lowercase"></app-action2>
               <app-action2 @click.native="camelCase" text="camelCase" title="Convert text to camelCase (using lodash _.camelCase)"></app-action2>
               <app-action2 @click.native="snakeCase" text="snake_case" title="Convert text to snake_case (using lodash _.snakeCase)"></app-action2>
-              <app-action2 @click.native="reverse" text="reverse" icon="sort-by-alphabet-alt" title="Convert message ABC to CBA"></app-action2>
-              <app-action2 @click.native="reverseLines" text="reverse lines" icon="sort-by-attributes-alt" title="Reverse lines 123 to 321"></app-action2>
+              <app-action2 @click.native="reverse" text="reverse" icon="fas fa-sort-alpha-up" title="Convert message ABC to CBA"></app-action2>
+              <app-action2 @click.native="reverseLines" text="reverse lines" icon="fas fa-sort-amount-down" title="Reverse lines 123 to 321"></app-action2>
               <app-action2 @click.native="trimLines" text="trim each line" title="Remove spaces at the beginning and the end of each line"></app-action2>
             </p>
           </div>
@@ -54,14 +63,14 @@
           <div class="col-sm-2">
             <h2>Encoding/decoding</h2>
           </div>
-          <div class="col-sm-10">
+          <div class="col-sm-10 form-inline">
             <app-action2 @click.native="base64encode" text="base64 encode" title="Encode text via Base64 (using JS btoa)"></app-action2>
             <app-action2 @click.native="base64decode" text="base64 decode" title="Decode text via Base64 (using JS atob)"></app-action2>
             &nbsp;&nbsp;&nbsp;
             <app-action2 @click.native="urlEncode" text="url encode" title="Encode text to URL safe (using JS encodeURIComponent)"></app-action2>
             <app-action2 @click.native="urlDecode" text="url decode" title="Decode URL safe (using JS decodeURIComponent)"></app-action2>
             &nbsp;&nbsp;&nbsp;
-            <app-action2 @click.native="message = caesar(message, caesarOffset)" text="Caesar with offset" title="Caesar on each letter of message"></app-action2><input style="width: 50px;text-align: center;" type="number" v-model="caesarOffset"/>
+            <app-action2 @click.native="message = caesar(message, caesarOffset)" text="Caesar with offset" title="Caesar on each letter of message"></app-action2><input style="width: 50px;text-align: center;" type="number" class="form-control h-100 p-0" v-model="caesarOffset"/>
             <app-action2 @click.native="caesarBruteforce" text="Caesar bruteforce" title="Bruteforce all 26 possiblities"></app-action2>
           </div>
         </div>
@@ -114,7 +123,7 @@
               <input v-model="alphabet" class="form-control input-sm" style="display:block;width:100%;">
               with length <input v-model="length" type="number" class="form-control">
               <br/>
-              <app-action2 @click.native="generate" text="Generate" icon="random"></app-action2>
+              <app-action2 @click.native="generate" text="Generate" icon="fas fa-random"></app-action2>
             </p>
           </div>
         </div><!-- /.row -->

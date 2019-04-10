@@ -69,25 +69,27 @@ const appHeader = {
 const appHeader2 = {
   template:
     '<header id="top" class="container">\
-      <nav class="navbar navbar-expand-md navbar-light">\
-        <a class="navbar-brand" :href="url()">Home</a> \
-        <button class="navbar-toggler" type="button" data-target="#navbarsExampleDefault" data-toggle="collapse"> <span class="navbar-toggler-icon"></span> </button>\
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">\
-          <ul class="navbar-nav mr-auto">\
-            <li class="nav-item"><a class="nav-link" :href="url(\'string\')">String</a></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'unix\')">UNIX<a/></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'seo\')">SEO<a/></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'crack\')">Crack & Hack<a/></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'mpg\')">MPG<a/></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'xml2csv\')">XML 2 CSV<a/></li>\
-            <li class="nav-item"><a class="nav-link" :href="url(\'csv\')">CSV<a/></li>\
-          </ul>\
-          <ul class="navbar-nav">\
-            <li class="nav-item"><a class="nav-link" href="#">Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></a></li>\
-            <li class="nav-item"><a class="nav-link" href="https://github.com/floriancourgey/tools" target="_blank">Github home</a></li>\
-          </ul>\
-        </div>\
-      </nav>\
+      <div class="card bg-light">\
+        <nav class="navbar navbar-expand-md navbar-light">\
+          <a class="navbar-brand" :href="url()">Home</a> \
+          <button class="navbar-toggler" type="button" data-target="#navbarsExampleDefault" data-toggle="collapse"> <span class="navbar-toggler-icon"></span> </button>\
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">\
+            <ul class="navbar-nav mr-auto">\
+              <li class="nav-item"><a class="nav-link" :href="url(\'string\')">String</a></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'unix\')">UNIX<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'seo\')">SEO<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'crack\')">Crack & Hack<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'mpg\')">MPG<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'xml2csv\')">XML 2 CSV<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'csv\')">CSV<a/></li>\
+            </ul>\
+            <ul class="navbar-nav">\
+              <li class="nav-item"><a class="nav-link" href="#">Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></a></li>\
+              <li class="nav-item"><a class="nav-link" href="https://github.com/floriancourgey/tools" target="_blank">Github home</a></li>\
+            </ul>\
+          </div>\
+        </nav>\
+      </div>\
       <hr/>\
     </header>',
   methods: {url: function(x){return url(x)}},
@@ -133,7 +135,7 @@ const appAction2 = {
   props: ['click', 'text', 'icon', 'title'],
   template:
   '<button :title="title" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip">\
-    <span v-if="icon" :class="glyphicon(icon)"></span> {{text}}\
+    <i v-if="icon" :class="icon"></i> {{text}}\
   </button>',
 };
 
