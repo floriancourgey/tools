@@ -65,6 +65,10 @@ var app = new App({
     xml2Jxon: function(){
       this.message = JSON.stringify(JXON.stringToJs(this.message), null, 2);
     },
+    adobeCampaignLog: function(){
+      this.message = this.message.replace(/.+\t/g, ''); // remove everything until last tabulation
+      this.reverseLines();
+    },
     updateAlphabet: function(){
       this.alphabet = '';
       if(this.alphabetaz) this.alphabet += 'abcdefghijklmnopqrstuvwxyz';
