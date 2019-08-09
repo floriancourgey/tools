@@ -4,6 +4,7 @@ var app = new App({
   data:{
     message: '',
     schemas: [],
+    dbEngine: 'postgresql',
   },
   methods: {
     generate: function() {
@@ -19,16 +20,31 @@ var app = new App({
       // for each schema
       var schemas = $xml.children('package').children('entities[schema="xtk:schema"]').children('schema');
       for(var schema of schemas){
+        // main data
         var $schema = $(schema);
         var mainElement = $schema.children('element[sqltable]')[0];
         var schema = {
           root: getAttributes(schema),
           mainElement: getAttributes(mainElement),
           columns: [],
+          enumerations: [],
         };
-        for(var attribute of $schema.find('attribute')){
-          schema.columns.push(getAttributes(attribute));
+        // columns
+        for(var column of $schema.find('attribute')){
+          schema.columns.push(getAttributes(column));
         }
+        // enums
+        for(var e of $schema.find('enumeration')){
+          var enumeration = getAttributes(e);
+          enumeration.values = [];
+          for(var value of $(e).children('value')){
+            enumeration.values.push(value.attributes.name.value+': '+value.attributes.label.value);
+          }
+          schema.enumerations.push(enumeration);
+        }
+        // keys
+
+        // final push
         this.schemas.push(schema);
       }
     }

@@ -18,6 +18,11 @@
         <button type="button" class="btn btn-default" @click="message='';schemas=[];">Clear</button>
         <textarea v-model="message" rows="3" class="form-control">
         </textarea>
+        <select v-model="dbEngine">
+          <option value="mssql">MSSQL</option>
+          <option value="oracle">Oracle</option>
+          <option value="postgresql">PostgreSQL</option>
+        </select>
         <button type="button" class="btn btn-primary" @click="generate">Generate</button>
         <div class="">
           <h2>Tables</h2>
@@ -26,26 +31,94 @@
           </ul>
         </div>
         <div class="">
-          <div class="" v-for="schema in schemas">
-            <h2 v-bind:id="schema.mainElement.sqltable">{{schema.root.namespace}}:{{schema.root.name}}</h2>
-            <table class="table table-sm table-striped">
-              <thead>
-                <tr>
-                  <th>Column Name</th>
-                  <th>Data type</th>
-                  <th>Label</th>
-                  <th>Comments</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="column in schema.columns">
-                  <td>{{column.name}}</td>
-                  <td>{{column.type}}</td>
-                  <td>{{column.label}}</td>
-                  <td>{{column.desc}}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="card bg-light mb-3" v-for="schema in schemas">
+            <div class="card-header">
+              <span class="h3">v-bind:id="schema.mainElement.sqltable">{{schema.root.namespace}}:{{schema.root.name}}</span>
+            </div>
+            <div class="card-body row">
+              <div class="col-4">
+                <div class="">Columns</div>
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Column Name</th>
+                      <th>Data type</th>
+                      <th>Label</th>
+                      <th>Comments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="column in schema.columns">
+                      <td>{{column.name}}</td>
+                      <td>{{column.type}}</td>
+                      <td>{{column.label}}</td>
+                      <td>{{column.desc}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-4">
+                <div class="">Keys</div>
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Key name</th>
+                      <th>Field</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+                <div class="">Indexes</div>
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Index name</th>
+                      <th>Field</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-4">
+                <div class="">Links</div>
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Target</th>
+                      <th>Cardinality</th>
+                      <th>Join on</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+                <div class="">Enumerations</div>
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="enumeration in schema.enumerations">
+                      <td>{{enumeration.name}}</td>
+                      <td>
+                        <select>
+                          <option v-for="val in enumeration.values">{{val}}</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </main>
