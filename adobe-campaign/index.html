@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adobe Campaign by floriancourgey.com</title>
+    <link rel="stylesheet" href="../vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="adobe-campaign">
+      <app-header></app-header>
+      <main role="main" class="container">
+        <h1>Adobe Campaign helper</h1>
+        <h2>Input text</h2>
+        <button type="button" class="btn btn-default" @click="message='';schemas=[];">Clear</button>
+        <textarea v-model="message" rows="3" class="form-control">
+        </textarea>
+        <button type="button" class="btn btn-primary" @click="generate">Generate</button>
+        <div class="">
+          <h2>Tables</h2>
+          <ul>
+            <li v-for="schema in schemas"><a v-bind:href="'#'+schema.mainElement.sqltable">{{schema.root.label}} ({{schema.root.namespace}}:{{schema.root.name}}) {{schema.mainElement.desc}}</a></li>
+          </ul>
+        </div>
+        <div class="">
+          <div class="" v-for="schema in schemas">
+            <h2 v-bind:id="schema.mainElement.sqltable">{{schema.root.namespace}}:{{schema.root.name}}</h2>
+            <table class="table table-sm table-striped">
+              <thead>
+                <tr>
+                  <th>Column Name</th>
+                  <th>Data type</th>
+                  <th>Label</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="column in schema.columns">
+                  <td>{{column.name}}</td>
+                  <td>{{column.type}}</td>
+                  <td>{{column.label}}</td>
+                  <td>{{column.desc}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <app-footer></app-footer>
+    </div>
+    <script src="../vendor/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="../vendor/bootstrap-3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="../vendor/vue-2.5.17.min.js" charset="utf-8"></script>
+    <script src="../app.js" charset="utf-8"></script>
+    <script src="../polyfill.js" charset="utf-8"></script>
+    <script src="adobe-campaign.js" charset="utf-8"></script>
+  </body>
+</html>

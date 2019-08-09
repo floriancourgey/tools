@@ -50,6 +50,7 @@ const appHeader = {
               <li><a :href="url(\'mpg\')">MPG</a></li>\
               <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
               <li><a :href="url(\'csv\')">CSV</a></li>\
+              <li><a :href="url(\'adobe-campaign\')">Adobe Campaign</a></li>\
             </ul>'+
             // NAVBAR RIGHT
             '<ul class="nav navbar-nav navbar-right">\
@@ -106,6 +107,8 @@ const appFooter = {
             <li><a :href="url(\'seo\')">SEO tools</a></li>\
             <li><a :href="url(\'mpg\')">MPG</a></li>\
             <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
+            <li><a :href="url(\'csv\')">CSV</a></li>\
+            <li><a :href="url(\'adobe-campaign\')">Adobe Campaign</a></li>\
             <li>Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></li>\
             <li><a href="#top">Back to top</a></li>\
           </ul>\
