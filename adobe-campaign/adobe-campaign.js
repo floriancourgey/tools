@@ -28,10 +28,19 @@ var app = new App({
           mainElement: getAttributes(mainElement),
           columns: [],
           enumerations: [],
+          links: [],
+          keys: [],
+          indexes: [],
         };
         // columns
         for(var column of $schema.find('attribute')){
           schema.columns.push(getAttributes(column));
+        }
+        // links
+        for(var l of $schema.find('element[type="link"]')){
+          var link = getAttributes(l);
+          link.cardinality = (link.unbound && link.unbound=='true') ? '1:N' : '1:1';
+          schema.links.push(link);
         }
         // enums
         for(var e of $schema.find('enumeration')){
@@ -43,7 +52,13 @@ var app = new App({
           schema.enumerations.push(enumeration);
         }
         // keys
-
+        for(var key of $schema.find('key')){
+          schema.keys.push(getAttributes(key))
+        }
+        // indexes
+        for(var index of $schema.find('dbindex')){
+          schema.indexes.push(getAttributes(index))
+        }
         // final push
         this.schemas.push(schema);
       }

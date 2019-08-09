@@ -41,14 +41,18 @@
                 <table class="table table-sm table-striped">
                   <thead>
                     <tr>
-                      <th>Column Name</th>
-                      <th>Data type</th>
+                      <th>SQL column</th>
+                      <th>SQL type</th>
+                      <th>AC Name</th>
+                      <th>AC type</th>
                       <th>Label</th>
                       <th>Comments</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="column in schema.columns">
+                      <td>{{column.sqlname}}</td>
+                      <td>{{column.type}}</td>
                       <td>{{column.name}}</td>
                       <td>{{column.type}}</td>
                       <td>{{column.label}}</td>
@@ -67,7 +71,10 @@
                     </tr>
                   </thead>
                   <tbody>
-
+                    <tr v-for="key in schema.keys">
+                      <td>todo</td>
+                      <td>{{key.name}}</td>
+                    </tr>
                   </tbody>
                 </table>
                 <div class="">Indexes</div>
@@ -79,7 +86,10 @@
                     </tr>
                   </thead>
                   <tbody>
-
+                    <tr v-for="index in schema.indexes">
+                      <td>{{index.name}}</td>
+                      <td>todo</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -88,14 +98,21 @@
                 <table class="table table-sm table-striped">
                   <thead>
                     <tr>
-                      <th>Name</th>
+                      <th>AC Name</th>
+                      <th>Label</th>
                       <th>Target</th>
-                      <th>Cardinality</th>
+                      <th>Card.</th>
                       <th>Join on</th>
                     </tr>
                   </thead>
                   <tbody>
-
+                    <tr v-for="link in schema.links">
+                      <td>{{link.name}}</td>
+                      <td>{{link.label}}</td>
+                      <td>{{link.target}}</td>
+                      <td>{{link.cardinality}}</td>
+                      <td>todo</td>
+                    </tr>
                   </tbody>
                 </table>
                 <div class="">Enumerations</div>
