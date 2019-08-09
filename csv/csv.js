@@ -1,5 +1,5 @@
 var app = new App({
-  el: '#xml2csv',
+  el: '#csv',
   data:{
     message: window.sample || '',
     xml: null,
