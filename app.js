@@ -46,9 +46,7 @@ const appHeader = {
             // NAVBAR LEFT
             '<ul class="nav navbar-nav">\
               <li><a :href="url(\'string\')">String tools</a></li>\
-              <li><a :href="url(\'unix\')" style="text-decoration:line-through">UNIX tools</a></li>\
               <li><a :href="url(\'seo\')">SEO tools</a></li>\
-              <li><a :href="url(\'crack\')" style="text-decoration:line-through">Crack & Hack</a></li>\
               <li><a :href="url(\'mpg\')">MPG</a></li>\
               <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
               <li><a :href="url(\'csv\')">CSV</a></li>\
@@ -105,9 +103,7 @@ const appFooter = {
           <ul>\
             <li><a :href="url()">Home</a></li>\
             <li><a :href="url(\'string\')">String tools</a></li>\
-            <li><a :href="url(\'unix\')">UNIX tools</a></li>\
             <li><a :href="url(\'seo\')">SEO tools</a></li>\
-            <li><a :href="url(\'crack\')">Crack & Hack</a></li>\
             <li><a :href="url(\'mpg\')">MPG</a></li>\
             <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
             <li>Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></li>\
