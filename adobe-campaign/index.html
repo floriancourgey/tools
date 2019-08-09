@@ -33,7 +33,7 @@
         <div class="">
           <div class="card bg-light mb-3" v-for="schema in schemas">
             <div class="card-header">
-              <span class="h3">v-bind:id="schema.mainElement.sqltable">{{schema.root.namespace}}:{{schema.root.name}}</span>
+              <span class="h3" v-bind:id="schema.mainElement.sqltable">{{schema.root.namespace}}:{{schema.root.name}}</span>
             </div>
             <div class="card-body row">
               <div class="col-4">
