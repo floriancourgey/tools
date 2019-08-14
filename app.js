@@ -75,12 +75,11 @@ const appHeader2 = {
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">\
             <ul class="navbar-nav mr-auto">\
               <li class="nav-item"><a class="nav-link" :href="url(\'string\')">String</a></li>\
-              <li class="nav-item"><a class="nav-link" :href="url(\'unix\')">UNIX<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'seo\')">SEO<a/></li>\
-              <li class="nav-item"><a class="nav-link" :href="url(\'crack\')">Crack & Hack<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'mpg\')">MPG<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'xml2csv\')">XML 2 CSV<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'csv\')">CSV<a/></li>\
+              <li class="nav-item"><a class="nav-link" :href="url(\'adobe-campaign\')">Adobe Campaign</a></li>\
             </ul>\
             <ul class="navbar-nav">\
               <li class="nav-item"><a class="nav-link" href="#">Language: <span onclick="app.switchLanguage(\'en\')">🇬🇧</span> <span onclick="app.switchLanguage(\'fr\')">🇫🇷</span></a></li>\
