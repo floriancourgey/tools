@@ -2,7 +2,7 @@ var app = new App({
   el: '#app-string',
   data: {
     message: '',
-    alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+    alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_@éèôöâä}{&,§%*$£',
     length: 20,
     replaceX: '\\s+',
     byY: '-',
@@ -77,8 +77,8 @@ var app = new App({
       if(!this.alphabetAZ) this.alphabet = this.alphabet.replace(/[A-Z]/g, '');
       if(this.alphabet09) this.alphabet += '0123456789';
       if(!this.alphabet09) this.alphabet = this.alphabet.replace(/[0-9]/g, '');
-      if(this.alphabetSym) this.alphabet += '!#$%&*+-=?@^_.';
-      if(!this.alphabetSym) this.alphabet = this.alphabet.replace(/[!#$%&*+\-=?@^_\.]/g, '');
+      if(this.alphabetSym) this.alphabet += '!#$%&*+-=?@^_.éèôöâä}{,§£';
+      if(!this.alphabetSym) this.alphabet = this.alphabet.replace(/[!#$%&*+\-=?@^_\.éèôöâä}{,§£]/g, '');
     },
     generate: function(){
       var generated = "";
