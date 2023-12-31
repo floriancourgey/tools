@@ -45,8 +45,7 @@ const appHeader = {
           <div id="navbar" class="navbar-collapse collapse">'+
             // NAVBAR LEFT
             '<ul class="nav navbar-nav">\
-              <li><a :href="url(\'string\')">String tools</a></li>\
-              <li><a :href="url(\'seo\')">SEO tools</a></li>\
+              <li><a href="https://gchq.github.io/CyberChef/">String tools</a></li>\
               <li><a :href="url(\'mpg\')">MPG</a></li>\
               <li><a :href="url(\'xml2csv\')">XML 2 CSV</a></li>\
               <li><a :href="url(\'csv\')">CSV</a></li>\
@@ -74,8 +73,7 @@ const appHeader2 = {
           <button class="navbar-toggler" type="button" data-target="#navbarsExampleDefault" data-toggle="collapse"> <span class="navbar-toggler-icon"></span> </button>\
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">\
             <ul class="navbar-nav mr-auto">\
-              <li class="nav-item"><a class="nav-link" :href="url(\'string\')">String</a></li>\
-              <li class="nav-item"><a class="nav-link" :href="url(\'seo\')">SEO<a/></li>\
+              <li class="nav-item"><a class="nav-link" href="https://gchq.github.io/CyberChef/">String</a></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'mpg\')">MPG<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'xml2csv\')">XML 2 CSV<a/></li>\
               <li class="nav-item"><a class="nav-link" :href="url(\'csv\')">CSV<a/></li>\
